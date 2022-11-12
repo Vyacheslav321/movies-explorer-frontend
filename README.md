@@ -1,21 +1,28 @@
-# movies-explorer-frontend
+<![Movies-explorer](./public/title.jpg)>
+
+## movies-explorer-frontend
 Фронтенд часть приложения movies-explorer
+#
+## Проект Movies-explorer - дипломная работа курса [Яндекс-практикум](https://praktikum.yandex.ru/) по професии Веб-разработчик
+
+Ссылка на проект: [Movies-explorer]()
+
+Ссылка на GH-pages: [Movies-explorer GH-pages]()
+
+Ссылка на репозиторий бэкенда: [Movies-explorer API]()
+
+## Краткое описание проекта
 
 
 
+## Инструменты
 
 
-## Available Scripts
+## Задачи
 
-In the project directory, you can run:
 
-### `npm start` - Runs the app in the development mode.
+##  Установка зависимостей
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm start` - Запуск приложения в режиме разработчика.
 
-### `npm run build` - Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run build` - Сборка приложения в Production в папку `build`.
