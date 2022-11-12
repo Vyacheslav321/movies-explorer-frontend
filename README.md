@@ -1,8 +1,10 @@
 <![Movies-explorer](./public/title.jpg)>
 
 ## movies-explorer-frontend
+
 Фронтенд часть приложения movies-explorer
-#
+
+
 ## Проект Movies-explorer - дипломная работа курса [Яндекс-практикум](https://praktikum.yandex.ru/) по професии Веб-разработчик
 
 Ссылка на проект: [Movies-explorer]()
