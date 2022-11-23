@@ -1,1 +1,90 @@
-.about-project {}
+.about-project {
+  margin: 0;
+  padding: 14px 18px 70px;
+  text-align: start;
+}
+
+.about-project__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  text-align: start;
+  margin: 0;
+  padding: 0;
+}
+
+.about-project__headers {
+  margin: 57px 0 15px 0;
+  padding: 0;
+}
+
+.about-project__description {
+  margin: 0;
+  padding: 0;
+}
+
+.about-project__line {
+  margin-bottom: 4px;
+  padding: 0 0 27px 0;
+  border-bottom: solid #dadada 1px;
+}
+
+.about-project__scale {
+  margin: 60px 0 0 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+}
+
+.about-project__scale-column {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content:center;
+}
+
+.about-project__scale-column_first {
+  width: 20.95%;
+  min-width: 100px;
+}
+
+.about-project__scale-column_second {
+  width: calc(100% - 20.95%);
+  min-width: 184px;
+}
+
+.about-project__scale-box {
+  margin: 0;
+  padding: 11px 0 11px 1px;
+  width: 100%;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  justify-content: center;
+}
+
+.about-project__scale-box_week_first {
+  background: #3ddc84;
+}
+
+.about-project__scale-box_week_second {
+  background: #303030;
+}
+
+.about-project__scale-description {
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-family: "Suisse", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  
+}

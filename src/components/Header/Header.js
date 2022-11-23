@@ -1,16 +1,12 @@
 import "./Header.css";
+import logo from "../../images/header/header__logo.png";
 import Navigation from "../Navigation/Navigation";
 
 function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <h1>dfgfdgdfgfdgdfgfdgfd</h1>
-        <img
-          className="header__logo"
-          src="../../images/header__logo.jpg"
-          alt=""
-        />
+        <img className="header__logo" src={logo} alt="S" />
         <Navigation />
       </div>
     </header>

@@ -1,13 +1,15 @@
 .header {
   width: 100%;
   min-height: 74px;
-  color: #073042;
+  background-color: #073042;
 }
 
 .header__container {
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
+  margin: 0;
+  padding: 18px 14px;
 }
 
 .header__logo {
@@ -15,4 +17,10 @@
   padding: 0;
   width: 38px;
   height: 38px;
+}
+
+@media screen and (min-width: 767px) {
+  .header__container {
+    padding: 18px 30px;
+  }
 }

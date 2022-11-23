@@ -70,12 +70,12 @@ function App() {
     <div className="page">
       <Route path="/test">
         <Header />
-        <Preloader />
+        <Main />
+        <Footer />
       </Route>
       <Route exact path="/">
         <Header />
       </Route>
-      <Main />
       <Route path="/signup">
         <Register />
       </Route>
