@@ -46,7 +46,6 @@
   .navigation__menu:last-child {
     margin-right: 0;
   }
-  /* .navigation__menu_type_login {
-    width: 76px;
-  } */
 }
+
+@media screen and (min-width: 1280px) {}

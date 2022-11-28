@@ -37,6 +37,12 @@
   letter-spacing: -0.04em;
 }
 
+.text__subheader {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+}
+
 .text__description {
   font-size: 11px;
   line-height: 16px;
@@ -45,4 +51,38 @@
 .text__link {
   font-size: 12px;
   line-height: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .text__header {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .text__subheader {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .text__description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .text__link {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .text__description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  /* .text__link {
+    font-size: 13px;
+    line-height: 16px;
+  } */
 }
