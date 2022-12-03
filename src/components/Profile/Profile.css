@@ -1,1 +1,49 @@
-.profile {}
+.profile {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-start;
+}
+
+.profile__text {
+  margin: 0;
+  padding: 7px 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile__menu {
+  margin-right: 14px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #FFF;
+}
+.profile__menu:last-child {
+  margin-right: 0;
+  color: #000;
+}
+
+.profile__menu_type_login {
+  width: 54px;
+  background: #3ddc84;
+  border-radius: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__text {
+    padding: 8px 11px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .profile__menu {
+    margin-right: 19px;
+  }
+  .profile__menu:last-child {
+    margin-right: 0;
+  }
+}

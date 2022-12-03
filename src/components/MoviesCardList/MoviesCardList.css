@@ -1,1 +1,9 @@
-.movies-card-list {}
+.movies-card-list {
+  margin: 0;
+  padding: 0;
+  background-color: #FFF;
+}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 1280px) {}

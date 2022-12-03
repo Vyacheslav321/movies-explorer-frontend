@@ -2,15 +2,27 @@ import { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
-import Profile from "../Profile/Profile";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import Movies from "../Movies/Movies";
-import Preloader from "../Preloader/Preloader";
+import Footer from "../Footer/Footer";
+import NotFound from "../NotFound/NotFound";
 
+function App() {
+const isLoggedIn = localStorage.getItem('loggedIn');
+const history = useHistory();
+
+function handleLogin () {
+  localStorage.setItem('loggedIn', 'true');
+}
+
+function handleSignOut() {
+  localStorage.removeItem('loggedIn');
+  history.push('/');
+}
 // const onRegister = ({ email, password }) => {
 //   return register(email, password)
 //     .then((data) => {
@@ -32,7 +44,6 @@ import Preloader from "../Preloader/Preloader";
 //   return authorize(email, password)
 //     .then((res) => {
 //       if (res) {
-//         // setCookie("jwt", res.token, { path: '/' })
 //         localStorage.setItem('jwt', res.token);
 //         setEmail(res.email);
 //         setLoggedIn(true);
@@ -65,34 +76,36 @@ import Preloader from "../Preloader/Preloader";
 //   }
 // }, [history]);
 
-function App() {
   return (
     <div className="page">
-      <Route path="/test">
+      <Route exact path="/">
         <Header />
         <Main />
-        <Footer />
       </Route>
-      <Route exact path="/">
-        <Header />
+      <Route exact path="/signup">
+        {isLoggedIn ? <Redirect to="/" /> : <Register />}
       </Route>
-      <Route path="/signup">
-        <Register />
+      <Route exact path="/signin">
+        {isLoggedIn ? <Redirect to="/" /> : <Login />}
       </Route>
-      <Route path="/signin">
-        <Login />
-      </Route>
-      <Route path="/profile">
+      <Route exact path="/profile">
         <Profile />
       </Route>
-      <Route path="/movies">
+      <Route exact path="/movies" loggedIn={isLoggedIn}>
+        <Header />
         <Movies />
+        <Footer />
       </Route>
-      <Route path="/saved-movies">
+      <Route exact path="/saved-movies">
+        <Header />
         <SavedMovies />
+        <Footer />
       </Route>
       <Route exact path="/">
         <Footer />
+      </Route>
+      <Route path="*">
+        <NotFound />
       </Route>
     </div>
   );

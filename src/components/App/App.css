@@ -1,7 +1,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  min-width: 320px;
+  /* min-width: 320px; */
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   text-align: center;
@@ -51,6 +51,10 @@
 .text__link {
   font-size: 12px;
   line-height: 15px;
+}
+
+.no-display {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {

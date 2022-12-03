@@ -1,17 +1,22 @@
 import "./Navigation.css";
+import "../App/App.css";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Navigation() {
+function Navigation(props) {
   return (
     <nav className="navigation">
-      <a href="#" className="navigation__menu navigation__text">
-        Регистрация
-      </a>
-      <a
-        href=""
-        className="navigation__menu navigation__menu_type_login navigation__text"
-      >
-        Войти
-      </a>
+      <div className={props.loggedIn ? "" : "no-display"}>
+        <Link to="/movies" className="navigation__menu navigation__text">
+          Фильмы
+        </Link>
+        <Link
+          to="/saved-movies"
+          className="navigation__menu navigation__menu_type_login navigation__text"
+        >
+          Сохранённые фильмы
+        </Link>
+      </div>
     </nav>
   );
 }
