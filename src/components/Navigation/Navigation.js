@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Navigation(props) {
+  
   return (
     <nav className="navigation">
       <div className={props.loggedIn ? "" : "no-display"}>

@@ -1,112 +1,91 @@
-import { useState, useEffect } from "react";
+import React from "react";
+import {
+  useState,
+  // useEffect,
+} from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import "./App.css";
-import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
-import Footer from "../Footer/Footer";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-const isLoggedIn = localStorage.getItem('loggedIn');
-const history = useHistory();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [inProgress, setInProgress] = React.useState(false);
 
-function handleLogin () {
-  localStorage.setItem('loggedIn', 'true');
-}
+  const history = useHistory();
 
-function handleSignOut() {
-  localStorage.removeItem('loggedIn');
-  history.push('/');
-}
-// const onRegister = ({ email, password }) => {
-//   return register(email, password)
-//     .then((data) => {
-//       setIsReg(true);
-//       setInfoPopupOpen(true);
-//       setEmail(data.email);
-//       history.push("/sign-in");
-//     })
-//     .catch((err) => {
-//       err.message === undefined
-//         ? setMessage(err.error)
-//         : setMessage(err.message);
-//       setIsReg(false);
-//       setInfoPopupOpen(true);
-//     });
-// };
-//
-// const onLogin = ({ email, password }) => {
-//   return authorize(email, password)
-//     .then((res) => {
-//       if (res) {
-//         localStorage.setItem('jwt', res.token);
-//         setEmail(res.email);
-//         setLoggedIn(true);
-//         history.replace({ pathname: "/" });
-//       }
-//     })
-//     .catch((err) => {
-//       err.message === undefined
-//         ? setMessage(err.error)
-//         : setMessage(err.message);
-//       setIsReg(false);
-//       setInfoPopupOpen(true);
-//     });
-// };
-//
-// // проверка валидности токена и получения email
-// useEffect(() => {
-//   // const token = cookies["jwt"];
-//   const token = localStorage.getItem('jwt');
-//   if (token) {
-//     getToken(token)
-//       .then((res) => {
-//         setLoggedIn(true);
-//         setEmail(res.email);
-//         history.push("/");
-//       })
-//       .catch((err) => {
-//         console.log(err.message);
-//       });
-//   }
-// }, [history]);
+  function handleRegister() {
+    setInProgress(true);
+    setLoggedIn(true);
+    history.push("/movies");
+    setInProgress(false);
+  }
+
+  function handleLogin() {
+    setInProgress(true);
+    setLoggedIn(true);
+    history.push("/movies");
+    setInProgress(false);
+  }
+
+  // function handleSignOut() {
+  //   setLoggedIn(false);
+  //   history.push("/");
+  // }
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("jwt");
+  //   if (token) {
+  //     getToken(token)
+  //       .then((res) => {
+  //         setEmail(res.data.email);
+  //         setLoggedIn(true);
+  //         history.push("/");
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.message);
+  //       });
+  //   }
+  // }, [history]);
 
   return (
     <div className="page">
-      <Route exact path="/">
-        <Header />
-        <Main />
-      </Route>
-      <Route exact path="/signup">
-        {isLoggedIn ? <Redirect to="/" /> : <Register />}
-      </Route>
-      <Route exact path="/signin">
-        {isLoggedIn ? <Redirect to="/" /> : <Login />}
-      </Route>
-      <Route exact path="/profile">
-        <Profile />
-      </Route>
-      <Route exact path="/movies" loggedIn={isLoggedIn}>
-        <Header />
-        <Movies />
-        <Footer />
-      </Route>
-      <Route exact path="/saved-movies">
-        <Header />
-        <SavedMovies />
-        <Footer />
-      </Route>
-      <Route exact path="/">
-        <Footer />
-      </Route>
-      <Route path="*">
-        <NotFound />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Main loggedIn={loggedIn} />
+        </Route>
+        <Route exact path="/signup">
+          {loggedIn ? (
+            <Redirect to="/" />
+          ) : (
+            <Register onRegister={handleRegister} inProgress={inProgress} />
+          )}
+        </Route>
+        <Route exact path="/signin">
+          {loggedIn ? (
+            <Redirect to="/" />
+          ) : (
+            <Login onLogin={handleLogin} inProgress={inProgress} />
+          )}
+        </Route>
+        <Route exact path="/profile" loggedIn={loggedIn}>
+          <Profile />
+        </Route>
+        <Route exact path="/movies" loggedIn={loggedIn}>
+          <Movies />
+        </Route>
+        <Route exact path="/saved-movies" loggedIn={loggedIn}>
+          <SavedMovies />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
     </div>
   );
 }
