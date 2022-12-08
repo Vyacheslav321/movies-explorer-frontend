@@ -61,6 +61,10 @@
   }
 
   .not-found__link {
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    /* max-width: 0; */
     bottom: 222px;
     font-size: 14px;
     line-height: 17px;

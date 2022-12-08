@@ -1,7 +1,13 @@
 .header {
   width: 100%;
   min-height: 74px;
+}
+.header_color_landing {
   background-color: #073042;
+}
+
+.header_color_movies {
+  background-color: #202020;
 }
 
 .header__container {
@@ -9,17 +15,31 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  padding: 18px 14px;
+  padding: 16px 14px;
 }
 
 .header__logo {
-  margin: 0;
+  background: url("../../images/header/header__logo.png") left top no-repeat;
+  margin: 2px 0 4px  0;
   padding: 0;
   width: 38px;
   height: 38px;
 }
 
+.header__navigation {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content:center;
+}
+
 @media screen and (min-width: 768px) {
+  .header__logo {
+    margin: 0 0 4px  0;
+  }
   .header__container {
     padding: 18px 30px;
   }

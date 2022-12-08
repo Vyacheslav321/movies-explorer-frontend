@@ -3,7 +3,12 @@ import {
   useState,
   // useEffect,
 } from "react";
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  // Redirect,
+  useHistory,
+} from "react-router-dom";
 import "./App.css";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -14,8 +19,9 @@ import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [inProgress, setInProgress] = React.useState(false);
+  // const [isNavigationPopupOpen, setIsNavigationPopupOpen]
 
   const history = useHistory();
 
@@ -29,6 +35,7 @@ function App() {
   function handleLogin() {
     setInProgress(true);
     setLoggedIn(true);
+    console.log("LoggedIn = " + loggedIn);
     history.push("/movies");
     setInProgress(false);
   }
@@ -60,27 +67,19 @@ function App() {
           <Main loggedIn={loggedIn} />
         </Route>
         <Route exact path="/signup">
-          {loggedIn ? (
-            <Redirect to="/" />
-          ) : (
-            <Register onRegister={handleRegister} inProgress={inProgress} />
-          )}
+          <Register onRegister={handleRegister} inProgress={inProgress} />
         </Route>
         <Route exact path="/signin">
-          {loggedIn ? (
-            <Redirect to="/" />
-          ) : (
-            <Login onLogin={handleLogin} inProgress={inProgress} />
-          )}
+          <Login onLogin={handleLogin} inProgress={inProgress} />
         </Route>
-        <Route exact path="/profile" loggedIn={loggedIn}>
-          <Profile />
+        <Route exact path="/profile">
+          <Profile loggedIn={loggedIn} />
         </Route>
-        <Route exact path="/movies" loggedIn={loggedIn}>
-          <Movies />
+        <Route exact path="/movies">
+          <Movies loggedIn={loggedIn} />
         </Route>
-        <Route exact path="/saved-movies" loggedIn={loggedIn}>
-          <SavedMovies />
+        <Route exact path="/saved-movies">
+          <SavedMovies loggedIn={loggedIn} />
         </Route>
         <Route path="*">
           <NotFound />
