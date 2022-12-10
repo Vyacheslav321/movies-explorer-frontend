@@ -19,7 +19,7 @@ import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [inProgress, setInProgress] = React.useState(false);
   // const [isNavigationPopupOpen, setIsNavigationPopupOpen]
 

@@ -1,8 +1,10 @@
 .navigation__wrap {
   width: 87%;
+  min-height: 42px;
   display: flex;
   justify-content: space-between;
   align-content: center;
+  align-items: center;
 }
 
 .navigation__wrap_position_right {
@@ -11,7 +13,7 @@
 
 .navigation__text {
   margin: 0;
-  padding: 5px 0;
+  padding: 0;
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-size: 10px;
@@ -42,7 +44,9 @@
   color: #fff;
 }
 .navigation__text_type_signin {
+  padding: 5px 0;
   min-width: 54px;
+  /* min-height: 26px; */
   font-weight: 500;
   font-size: 10px;
   line-height: 16px;
@@ -64,10 +68,11 @@
   flex-wrap: nowrap;
   justify-content: flex-end;
   align-content: center;
+  align-items:center;
 }
 
 .navigation__burger {
-  margin: 0 9px 2px 0;
+  margin: 1px 9px 1px 0;
   padding: 0;
   background: url("../../images/icon-burger.png") center no-repeat;
   width: 22px;
@@ -77,11 +82,56 @@
   cursor: pointer;
 }
 
+.navigation__account {
+  margin: 0;
+  padding: 0;
+  min-width: 100px;
+  min-height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  background: #202020;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(32, 32, 32, 1);
+  border-radius: 40px;
+}
+
+.navigation__account-text {
+  margin: 0 0 0 12px;
+  padding: 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navigation__account-round {
+  margin: 0 2px 0 0;
+  padding: 0;
+  background: #313131;
+    /* background: #FFF; */
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.navigation__account-img {
+  margin: 0;
+  padding: 0;
+  background: url("../../images/icon-main.png") center no-repeat;
+  width: 26px;
+  height: 26px;
+}
+
 @media screen and (min-width: 768px) {
   .navigation__text {
-    padding: 8px;
+    padding: 0 0 0 16px;
   }
   .navigation__text_type_movies {
+    padding-left: 8px;
     font-size: 18px;
     line-height: 22px;
   }
@@ -90,7 +140,7 @@
     line-height: 22px;
   }
   .navigation__text_type_signup {
-    margin-right: 22px;
+    margin-right: 30px;
     font-size: 12px;
     line-height: 16px;
   }
@@ -101,9 +151,9 @@
     line-height: 16px;
   }
   .navigation__burger {
-    margin: -5px 8px 0 0;
-    width: 28px;
-    height: 44px;
+    margin: 0;
+    width: 44px;
+    height: 40px;
   }
 }
 

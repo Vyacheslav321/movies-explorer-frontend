@@ -24,7 +24,14 @@ function Navigation({loggedIn, onClose}) {
       <div className='navigation__menu'>
         <Link to="/signup" className={`navigation__text navigation__text_type_signup ${loggedIn ? "navigation__hide" : ""}`}>Регистрация</Link>
         {loggedIn ? 
-          <Link to="/signin" className="navigation__text navigation__text_type_account">Аккаунт</Link> :
+          <Link to="/signin" className="navigation__text navigation__text_type_account">
+            <div className="navigation__account">
+              <h3 className="navigation__account-text">Аккаунт</h3>
+              <div className="navigation__account-round">
+                <div className="navigation__account-img"></div>
+              </div>
+            </div>
+          </Link> :
           <Link to="/signin" className="navigation__text navigation__text_type_signin">Войти</Link>
         }
       </div>
