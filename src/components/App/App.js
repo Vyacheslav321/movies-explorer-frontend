@@ -19,7 +19,7 @@ import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [inProgress, setInProgress] = React.useState(false);
   // const [isNavigationPopupOpen, setIsNavigationPopupOpen]
 
@@ -73,7 +73,7 @@ function App() {
           <Login onLogin={handleLogin} inProgress={inProgress} />
         </Route>
         <Route exact path="/profile">
-          <Profile loggedIn={loggedIn} />
+          <Profile loggedIn={loggedIn} inProgress={inProgress} />
         </Route>
         <Route exact path="/movies">
           <Movies loggedIn={loggedIn} />
