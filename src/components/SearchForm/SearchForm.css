@@ -1,5 +1,17 @@
 .search-form {
+  margin: 80px auto 60px;
+  padding: 0;
 }
+
+.search-form__form {}
+
+.search-form__input {}
+
+
+
+
+
+
 
 .search-form__checkbox {
   display: flex;
@@ -10,7 +22,7 @@
   font-size: 30px;
   margin-bottom: 5px;
   --checked-color: #3DDC84;
-  --unchecked-color: #A0A0A0;
+  --unchecked-color: #343434;;
 }
 
 .search-form__checkbox-switcher {

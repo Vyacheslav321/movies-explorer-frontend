@@ -1,18 +1,33 @@
 import "./SearchForm.css";
 
-function SearchForm() {
+function SearchForm({inProgress}) {
+function handleSearch(e) {
+  e.preventDefault();
+}
+
   return (
     <nav className="search-form">
-      <p>ФОРМА ПОИСКА</p>
-      {/* <label className="search-form__checkbox">
+      <form className="search-form__form" onSubmit={handleSearch}>
+        <input
+          className="search-form__input"
+          id="search"
+          name="search"
+          type="text"
+          placeholder="Фильм"
+          required
+          disabled={inProgress}
+          // value={Фильм}
+        ></input>
+      <label className="search-form__checkbox">
         <input
           type="checkbox"
           className="search-form__checkbox-switcher"
-          onChange=""
+          // onChange=""
         >
           Короткометражки
         </input>
-      </label> */}
+      </label>
+      </form>
     </nav>
   );
 }

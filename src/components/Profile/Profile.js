@@ -11,9 +11,9 @@ function Profile({ loggedIn, inProgress }) {
 
   return (
     <nav className={`profile ${loggedIn ? "" : "profile__hide"}`}>
-      <Header />
+      <Header loggedIn={loggedIn} />
       <h2 className="profile__header">Привет, Виталий!</h2>
-      <div className="profile__wrap">
+      <div className="profile__wrap profile__wrap_type_page">
         <form className="profile__form" onSubmit={handleSubmit}>
           <div className="profile__container">
             <p className="profile__label text__white">Имя</p>
@@ -44,20 +44,17 @@ function Profile({ loggedIn, inProgress }) {
               // value={email}
             ></input>
           </div>
-          <p className="profile__error text__normal"></p>
+          <p className="profile__error text__normal">fffffffffffff</p>
         </form>
         <div>
-          <div className="register__button-container">
-            <button className="login__button" type="submit">
-              Зарегистрироваться
-            </button>
+        <div className="profile__wrap profile__wrap_type_footer">
+          <button className="profile__button text__white" type="submit">
+            Редактировать
+          </button>
+          <Link to="/signin" className="profile__link text__normal text__white">
+            Выйти из аккаунта
+          </Link>
           </div>
-          <p className="login__footer text__normal text__gray">
-            Уже зарегистрированы?
-            <Link to="/signin" className="login__link text__normal">
-              Войти
-            </Link>
-          </p>
         </div>
       </div>
     </nav>

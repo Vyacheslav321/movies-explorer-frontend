@@ -35,13 +35,13 @@
   font-size: 13px;
   line-height: 16px;
   mix-blend-mode: normal;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 
 .promo__button {
   margin: 0;
   padding: 9px 20px 10px 19px;
-  opacity: 0.6;
+  /* opacity: 0.6; */
   border: 1px solid #fff;
   border-radius: 3px;
   background: #073042;
@@ -71,10 +71,6 @@
   }
   .promo__description {
     margin: 21px auto 99px;
-    font-size: 13px;
-    line-height: 16px;
-    mix-blend-mode: normal;
-    opacity: 0.5;
     max-width: 260px;
     text-align: center;
   }

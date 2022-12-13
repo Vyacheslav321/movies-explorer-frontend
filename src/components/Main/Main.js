@@ -7,10 +7,10 @@ import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 import "./Main.css";
 
-function Main(props) {
+function Main({loggedIn}) {
   return (
     <main className="main">
-      <Header loggedIn={props.loggedIn} />
+      <Header loggedIn={loggedIn} />
       <Promo />
       <AboutProject />
       <Techs />
