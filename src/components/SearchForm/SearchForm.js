@@ -1,9 +1,18 @@
+import { useState } from "react";
+import Checkbox from "../Checkbox/Checkbox";
 import "./SearchForm.css";
 
-function SearchForm({inProgress}) {
-function handleSearch(e) {
-  e.preventDefault();
-}
+function SearchForm({ inProgress }) {
+  const [switchChecked, setSwitchChecked] = useState(false);
+
+  function handleSearch(e) {
+    e.preventDefault();
+  }
+
+  function handleCheckbox() {
+    console.log('switchChecked = ' + switchChecked);
+    setSwitchChecked(!switchChecked);
+  }
 
   return (
     <nav className="search-form">
@@ -18,15 +27,7 @@ function handleSearch(e) {
           disabled={inProgress}
           // value={Фильм}
         ></input>
-      <label className="search-form__checkbox">
-        <input
-          type="checkbox"
-          className="search-form__checkbox-switcher"
-          // onChange=""
-        >
-          Короткометражки
-        </input>
-      </label>
+        <Checkbox onChange={handleCheckbox} isChecked={switchChecked} />
       </form>
     </nav>
   );

@@ -1,7 +1,7 @@
 .movies {
   margin: 0;
   padding: 0;
-  background-color: #FFF;
+  background: #202020;
 }
 
 @media screen and (min-width: 768px) {}

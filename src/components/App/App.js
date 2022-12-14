@@ -20,7 +20,7 @@ import NotFound from "../NotFound/NotFound";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [inProgress, setInProgress] = React.useState(false);
+  const [inProgress, setInProgress] = useState(false);
   // const [isNavigationPopupOpen, setIsNavigationPopupOpen]
 
   const history = useHistory();

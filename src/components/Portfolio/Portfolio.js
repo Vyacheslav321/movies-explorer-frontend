@@ -1,6 +1,5 @@
 import "./Portfolio.css";
 import "../App/App.css";
-import arrow from "../../images/arrow.png"
 
 function Portfolio() {
   return (
