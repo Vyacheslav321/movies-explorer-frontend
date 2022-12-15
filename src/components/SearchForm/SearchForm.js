@@ -10,25 +10,31 @@ function SearchForm({ inProgress }) {
   }
 
   function handleCheckbox() {
-    console.log('switchChecked = ' + switchChecked);
+    console.log("switchChecked = " + switchChecked);
     setSwitchChecked(!switchChecked);
   }
 
   return (
     <nav className="search-form">
       <form className="search-form__form" onSubmit={handleSearch}>
-        <input
-          className="search-form__input"
-          id="search"
-          name="search"
-          type="text"
-          placeholder="Фильм"
-          required
-          disabled={inProgress}
-          // value={Фильм}
-        ></input>
+        <fieldset className="search-form__field">
+          <input
+            className="search-form__input"
+            id="search"
+            name="search"
+            type="text"
+            placeholder="Фильм"
+            required
+            disabled={inProgress}
+            // value={Фильм || ''}
+          />
+          <button className="search-form__button" type="submit"></button>
+        </fieldset>
+
         <Checkbox onChange={handleCheckbox} isChecked={switchChecked} />
+        <div className="search-forn__line"></div>
       </form>
+
     </nav>
   );
 }

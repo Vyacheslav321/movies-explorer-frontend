@@ -20,7 +20,7 @@
 }
 
 .header__logo {
-  background: url("../../images/header/header__logo.png") center no-repeat;
+  background: url("../../images/header__logo.svg") center no-repeat;
   margin: 0;
   padding: 0;
   width: 38px;

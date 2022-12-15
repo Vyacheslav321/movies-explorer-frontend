@@ -74,7 +74,7 @@
 .navigation__burger {
   margin: 1px 9px 1px 0;
   padding: 0;
-  background: url("../../images/icon-burger.png") center no-repeat;
+  background: url("../../images/icon-burger.svg") center no-repeat;
   width: 22px;
   height: 40px;
   background-size: cover;
@@ -121,7 +121,7 @@
 .navigation__account-img {
   margin: 0;
   padding: 0;
-  background: url("../../images/icon-main.png") center no-repeat;
+  background: url("../../images/icon-account.svg") center no-repeat;
   width: 26px;
   height: 26px;
 }
