@@ -1,9 +1,48 @@
 .movies-card {
   margin: 0;
   padding: 0;
-  background-color: #FFF;
+  width: 300px;
+  height: 202px;
+  background-color: #202020;
 }
 
-@media screen and (min-width: 768px) {}
+.movies-card__image {
+  margin: 0;
+  padding: 0;
+  min-width: 300px;
+  min-height: 168px;
+  border-radius: 6px;
+}
 
-@media screen and (min-width: 1280px) {}
+.movies-card__wrap {
+  margin: 1px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.movies-card__header {
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.movies-card__duration {
+  font-size: 11px;
+  line-height: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: #2f2f2f;
+  border-radius: 3px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

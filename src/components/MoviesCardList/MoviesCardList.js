@@ -1,11 +1,11 @@
-import './MoviesCardList.css';
+import MoviesCard from "../MoviesCard/MoviesCard";
+import "./MoviesCardList.css";
 
-function MoviesCardList() {
-
-  
+function MoviesCardList({savedFilms}) {
   return (
-      <div className="movies-card-list">
-      </div>
+    <div className="movies-card-list">
+      <MoviesCard />
+    </div>
   );
 }
 

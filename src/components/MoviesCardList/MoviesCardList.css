@@ -1,9 +1,15 @@
 .movies-card-list {
   margin: 0;
-  padding: 0;
-  background-color: #FFF;
+  padding: 40px 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: center;
+  align-items: center;
 }
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+}
 
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+}

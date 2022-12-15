@@ -9,11 +9,9 @@ import "./SavedMovies.css";
 function SavedMovies({loggedIn}) {
   return (
     <nav className="saved-movies">
-      <Header loggedIn={loggedIn} />
+      <Header loggedIn={loggedIn} main={false} />
       <SearchForm />
-      <MoviesCardList />
-      <MoviesCard />
-      <Preloader />
+      <MoviesCardList savedFilms={true} />
       <Footer />
     </nav>
   );

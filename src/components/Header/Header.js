@@ -1,11 +1,11 @@
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ loggedIn, onClose }) {
+function Header({ loggedIn, onClose, main }) {
   return (
     <header
       className={`header ${
-        loggedIn ? "header_color_movies" : "header_color_landing"
+        main ? "header_color_landing" : "header_color_movies"
       }`}
     >
       <div className="header__container">

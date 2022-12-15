@@ -11,7 +11,7 @@ function Profile({ loggedIn, inProgress }) {
 
   return (
     <nav className={`profile ${loggedIn ? "" : "profile__hide"}`}>
-      <Header loggedIn={loggedIn} />
+      <Header loggedIn={loggedIn} main={false} />
       <h2 className="profile__header">Привет, Виталий!</h2>
       <div className="profile__wrap profile__wrap_type_page">
         <form className="profile__form" onSubmit={handleSubmit}>

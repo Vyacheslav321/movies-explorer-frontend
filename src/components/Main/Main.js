@@ -10,7 +10,7 @@ import "./Main.css";
 function Main({loggedIn}) {
   return (
     <main className="main">
-      <Header loggedIn={loggedIn} />
+      <Header loggedIn={loggedIn} main={true} />
       <Promo />
       <AboutProject />
       <Techs />
