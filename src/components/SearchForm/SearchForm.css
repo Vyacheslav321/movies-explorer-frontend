@@ -62,6 +62,7 @@
   border-radius: 50%;
   background: url(../../images/icon-search.svg) center no-repeat;
   background-color: #4285f4;
+  cursor: pointer;
 }
 
 .search-forn__line {

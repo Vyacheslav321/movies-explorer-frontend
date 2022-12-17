@@ -3,7 +3,7 @@ import Checkbox from "../Checkbox/Checkbox";
 import "./SearchForm.css";
 
 function SearchForm({ inProgress }) {
-  const [switchChecked, setSwitchChecked] = useState(false);
+  const [switchChecked, setSwitchChecked] = useState(true);
 
   function handleSearch(e) {
     e.preventDefault();

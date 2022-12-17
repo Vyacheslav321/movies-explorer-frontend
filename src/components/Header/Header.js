@@ -1,5 +1,6 @@
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
+import { Link } from "react-router-dom";
 
 function Header({ loggedIn, onClose, main }) {
   return (
@@ -9,7 +10,7 @@ function Header({ loggedIn, onClose, main }) {
       }`}
     >
       <div className="header__container">
-        <div className="header__logo"></div>
+        <Link to="/" className="header__logo" />
         <Navigation loggedIn={loggedIn} onClose={onClose} />
       </div>
     </header>
