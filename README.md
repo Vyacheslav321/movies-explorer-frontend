@@ -7,11 +7,9 @@
 
 ## Проект Movies-explorer - дипломная работа курса [Яндекс-практикум](https://praktikum.yandex.ru/) по професии Веб-разработчик
 
-Ссылка на проект: [Movies-explorer]()
-
 ССылка на проект в Figma [ПРОЕКТ](https://disk.yandex.ru/d/IVMNTIuVnh4yrw)
 
-Ссылка на GH-pages: [Movies-explorer GH-pages]()
+Ссылка на репозиторий фронтенда: [Movies-explorer](https://github.com/Vyacheslav321/movies-explorer-frontend/tree/main)
 
 Ссылка на репозиторий бэкенда: [Movies-explorer API](https://github.com/Vyacheslav321/movies-explorer-api)
 
