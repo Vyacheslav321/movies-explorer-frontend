@@ -3,14 +3,18 @@
   padding: 0;
 }
 
-@media screen and (min-width: 768px) {
-  .register__button-container {
-    margin: 91px 0 17px;
-  }
+.register__error {
+  margin: 6px 0;
+  padding: 0 0 204px;
+  min-height: 24px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  text-align: start;
 }
 
-@media screen and (min-width: 1280px) {
-  .register__button-container {
-    margin: 92px 0 16px;
+@media screen and (min-width: 768px) {
+  .register__error {
+    padding: 0 0 116px;
   }
 }

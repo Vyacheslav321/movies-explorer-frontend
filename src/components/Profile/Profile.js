@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import "../App/App.css";
 import "./Profile.css";
+import { useState } from "react";
 
-function Profile({ loggedIn, inProgress }) {
+function Profile({ loggedIn, handleSignOut }) {
+  const [editProfile, setEditProfile] = useState(false);
   function handleSubmit(e) {
     e.preventDefault();
+    setEditProfile(!editProfile);
+  }
+
+  function handleEditProfile() {
+    setEditProfile(!editProfile);
   }
 
   return (
@@ -18,15 +25,16 @@ function Profile({ loggedIn, inProgress }) {
           <div className="profile__container">
             <p className="profile__label text__white">Имя</p>
             <input
-              className="profile__input text__normal text__white"
+              className={`profile__input text__normal text__white ${editProfile ? "profile__active" : ""}`}
               id="name"
               name="name"
               type="text"
               autoComplete="name"
               placeholder="Виталий"
               required
-              disabled={inProgress}
-              // value={email}
+              disabled={!editProfile}
+              // value="Виталий"
+              // value={name}
             ></input>
           </div>
           <div className="profile__line"></div>
@@ -40,20 +48,44 @@ function Profile({ loggedIn, inProgress }) {
               autoComplete="email"
               placeholder="pochta@yandex.ru"
               required
-              disabled={inProgress}
+              disabled={!editProfile}
+              // value="pochta@yandex.ru"
               // value={email}
             ></input>
           </div>
-          <p className="profile__error text__normal">fffffffffffff</p>
+          <p
+            className={`profile__error text__normal ${
+              editProfile ? "" : "profile__hide"
+            }`}
+          >
+            описание ошибки
+          </p>
+          <button
+            className={`profile__button text__white ${editProfile ? "" : "profile__hide"}`}
+            type="submit"
+          >
+            Сохранить
+          </button>
         </form>
         <div>
-        <div className="profile__wrap profile__wrap_type_footer">
-          <button className="profile__button text__white" type="submit">
-            Редактировать
-          </button>
-          <Link to="/signin" className="profile__link text__normal text__white">
-            Выйти из аккаунта
-          </Link>
+          <div className="profile__wrap profile__wrap_type_footer">
+            <div
+              className={`profile__edit text__white ${
+                editProfile ? "profile__hide" : ""
+              }`}
+              onClick={handleEditProfile}
+            >
+              Редактировать
+            </div>
+            <Link
+              to="/"
+              className={`profile__exit text__normal text__white ${
+                editProfile ? "profile__hide" : ""
+              }`}
+              onClick={handleSignOut}
+            >
+              Выйти из аккаунта
+            </Link>
           </div>
         </div>
       </div>

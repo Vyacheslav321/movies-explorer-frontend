@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import "./Register.css";
+
 import "../App/App.css";
 import "../Login/Login.css";
+import "./Register.css";
 
 function Register(props) {
   function handleRegister(e) {
@@ -11,6 +12,7 @@ function Register(props) {
   return (
     <section className="login">
       <div className="login__header">
+        <Link to="/" className="header__logo" />
         <h2 className="login__welcome">Добро пожаловать!</h2>
       </div>
       <form className="login__form" onSubmit={handleRegister}>
@@ -52,9 +54,11 @@ function Register(props) {
           disabled={props.inProgress}
           // value={password}
         ></input>
-        <div className="login__line"></div>
-        <p className="login__error login__error_place_last text__normal"></p>
-        <div className="register__button-container">
+        <div className="login__line login__line_place_last"></div>
+        <p className="register__error text__normal">
+          Что-то пошло не так...
+        </p>
+        <div className="login__button-container">
           <button className="login__button" type="submit">
             Зарегистрироваться
           </button>

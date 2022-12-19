@@ -19,9 +19,8 @@ import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [inProgress, setInProgress] = useState(false);
-  // const [isNavigationPopupOpen, setIsNavigationPopupOpen]
 
   const history = useHistory();
 
@@ -35,15 +34,14 @@ function App() {
   function handleLogin() {
     setInProgress(true);
     setLoggedIn(true);
-    console.log("LoggedIn = " + loggedIn);
     history.push("/movies");
     setInProgress(false);
   }
 
-  // function handleSignOut() {
-  //   setLoggedIn(false);
-  //   history.push("/");
-  // }
+    function handleSignOut() {
+    setLoggedIn(false);
+    history.push("/");
+  }
 
   // useEffect(() => {
   //   const token = localStorage.getItem("jwt");
@@ -73,7 +71,7 @@ function App() {
           <Login onLogin={handleLogin} inProgress={inProgress} />
         </Route>
         <Route exact path="/profile">
-          <Profile loggedIn={loggedIn} inProgress={inProgress} />
+          <Profile loggedIn={loggedIn} handleSignOut={handleSignOut} />
         </Route>
         <Route exact path="/movies">
           <Movies loggedIn={loggedIn} />

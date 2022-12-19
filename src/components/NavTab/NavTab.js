@@ -11,7 +11,7 @@ function NavTab({ isMenuHide, onCloseMenu }) {
 
   return (
     <section
-      className={`nav-tab__burger-menu ${isMenuHide ? "nav-tab__hide" : ""}`}
+      className={`nav-tab__burger-menu ${isMenuHide ? "" : "visible"}`}
       onClick={handleOverlayClick}
     >
       <button
@@ -48,7 +48,7 @@ function NavTab({ isMenuHide, onCloseMenu }) {
           className="nav-tab__burger-profile"
         >
             <div className="navigation__account">
-              <h3 className="navigation__account-text">Аккаунт</h3>
+              <h3 className="navigation__account-text text__normal text__white">Аккаунт</h3>
               <div className="navigation__account-round">
                 <div className="navigation__account-img"></div>
               </div>
