@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  useState,
-  // useEffect,
-} from "react";
-import {
-  Route,
-  Switch,
-  // Redirect,
-  useHistory,
-} from "react-router-dom";
+import { useState } from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
 import "./App.css";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -38,7 +30,7 @@ function App() {
     setInProgress(false);
   }
 
-    function handleSignOut() {
+  function handleSignOut() {
     setLoggedIn(false);
     history.push("/");
   }

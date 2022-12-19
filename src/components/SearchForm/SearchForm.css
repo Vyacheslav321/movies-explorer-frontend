@@ -76,17 +76,21 @@
   .search-form__form {
     margin: 0 31px 0px;
   }
+  
   .search-form__field {
     margin: 0 0 41px 0;
   }
+
   .search-form__input {
     padding: 0 0 0 21px;
   }
+
   .search-form__input::placeholder {
     font-size: 13px;
     line-height: 17px;
     text-justify: inherit;
   }
+
   .search-forn__line {
     margin: 50px 0 9px;
   }
@@ -97,9 +101,11 @@
     margin: 60px auto 60px;
     padding: 0;
   }
+
   .search-form__form {
     margin: 0 71px 0px;
   }
+
   .search-forn__line {
     margin: 69px 0 9px;
   }

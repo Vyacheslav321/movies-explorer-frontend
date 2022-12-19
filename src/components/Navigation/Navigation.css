@@ -128,26 +128,31 @@
   .navigation__text {
     padding: 0 0 0 16px;
   }
+
   .navigation__text_type_movies {
     padding-left: 8px;
     font-size: 18px;
     line-height: 22px;
   }
+
   .navigation__text_type_saved-movies {
     font-size: 18px;
     line-height: 22px;
   }
+
   .navigation__text_type_signup {
     margin-right: 30px;
     font-size: 12px;
     line-height: 16px;
   }
+
   .navigation__text_type_signin {
     padding: 8px 0;
     min-width: 76px;
     font-size: 12px;
     line-height: 16px;
   }
+
   .navigation__burger {
     margin: 0;
     width: 44px;
@@ -167,6 +172,7 @@
     line-height: 18px;
     display: block;
   }
+
   .navigation__text_type_saved-movies {
     padding: 0 0 0 4px;
     min-width: 158px;
@@ -175,9 +181,11 @@
     line-height: 18px;
     display: block;
   }
+
   .navigation__text_type_account {
     display: block;
   }
+
   .navigation__burger {
     display: none;
   }

@@ -4,7 +4,9 @@ import "../App/App.css";
 function Techs() {
   return (
     <section className="techs">
-      <h2 className="techs__headers techs__line text__header text__normal text__white">Технологии</h2>
+      <h2 className="techs__headers techs__line text__header text__normal text__white">
+        Технологии
+      </h2>
       <h4 className="techs__header">7 технологий</h4>
       <p className="techs_description text__description text__normal text__white">
         На курсе веб-разработки мы освоили технологии, которые применили в

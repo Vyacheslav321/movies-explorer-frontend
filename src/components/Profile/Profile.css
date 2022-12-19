@@ -30,6 +30,7 @@
   align-items: center;
   position: relative;
 }
+
 .profile__wrap_type_page {
   height: 100vh;
   justify-content: space-between;
@@ -76,10 +77,6 @@
   text-align: right;
   flex: 1;
 }
-/* 
-.profile__input::placeholder {
-  color: #fff;
-} */
 
 .profile__active:active {
   outline: 0;

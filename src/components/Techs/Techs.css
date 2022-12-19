@@ -47,12 +47,6 @@
   align-items: center;
 }
 
-@media screen and (min-width: 507px) {
-  .techs__wrapper {
-    justify-content: space-evenly;
-  }
-}
-
 .techs__tech-card {
   display: inline-block;
   margin: 0;
@@ -71,6 +65,13 @@
   letter-spacing: -0.04em;
   color: #ffffff;
 }
+
+@media screen and (min-width: 507px) {
+  .techs__wrapper {
+    justify-content: space-evenly;
+  }
+}
+
 
 @media screen and (min-width: 768px) {
   .techs {
@@ -125,6 +126,7 @@
     justify-content: center;
     align-items: center;
   }
+
   .techs__tech-card {
     padding: 21px 0 22px;
     width: 90px;

@@ -1,7 +1,6 @@
 .page {
   display: flex;
   flex-direction: column;
-  /* min-width: 320px; */
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   text-align: center;
@@ -84,9 +83,4 @@
     font-size: 14px;
     line-height: 20px;
   }
-
-  /* .text__link {
-    font-size: 13px;
-    line-height: 16px;
-  } */
 }

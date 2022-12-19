@@ -11,11 +11,14 @@ function Promo() {
             Учебный проект студента факультета <nobr>Веб-разработки.</nobr>
           </h1>
           <p className="promo__description text__normal text__white">
-            Листайте ниже, чтобы узнать больше про&nbsp;этот проект и&nbsp;его создателя.
+            Листайте ниже, чтобы узнать больше про&nbsp;этот проект и&nbsp;его
+            создателя.
           </p>
         </div>
       </div>
-      <a className="promo__button" href="#about-project-link">Узнать больше</a>
+      <a className="promo__button" href="#about-project-link">
+        Узнать больше
+      </a>
     </section>
   );
 }

@@ -16,7 +16,6 @@ function MoviesCardList({ savedFilms }) {
         <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
-        {/* <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
@@ -24,7 +23,8 @@ function MoviesCardList({ savedFilms }) {
         <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
         <MoviesCard savedFilms={savedFilms} />
-        <MoviesCard savedFilms={savedFilms} /> */}
+        <MoviesCard savedFilms={savedFilms} />
+        <MoviesCard savedFilms={savedFilms} />
       </div>
       <button
         className={`movies-card-list__more-button text__white  ${

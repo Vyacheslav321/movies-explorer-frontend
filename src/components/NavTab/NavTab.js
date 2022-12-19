@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavTab.css";
-import '../Navigation/Navigation.css'
+import "../Navigation/Navigation.css";
 
 function NavTab({ isMenuHide, onCloseMenu }) {
   const handleOverlayClick = (evt) => {
@@ -43,16 +43,15 @@ function NavTab({ isMenuHide, onCloseMenu }) {
             Сохранённые фильмы
           </Link>
         </div>
-        <Link
-          to="/profile"
-          className="nav-tab__burger-profile"
-        >
-            <div className="navigation__account">
-              <h3 className="navigation__account-text text__normal text__white">Аккаунт</h3>
-              <div className="navigation__account-round">
-                <div className="navigation__account-img"></div>
-              </div>
+        <Link to="/profile" className="nav-tab__burger-profile">
+          <div className="navigation__account">
+            <h3 className="navigation__account-text text__normal text__white">
+              Аккаунт
+            </h3>
+            <div className="navigation__account-round">
+              <div className="navigation__account-img"></div>
             </div>
+          </div>
         </Link>
       </div>
     </section>

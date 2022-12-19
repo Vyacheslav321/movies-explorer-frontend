@@ -55,9 +55,7 @@ function Register(props) {
           // value={password}
         ></input>
         <div className="login__line login__line_place_last"></div>
-        <p className="register__error text__normal">
-          Что-то пошло не так...
-        </p>
+        <p className="register__error text__normal">Что-то пошло не так...</p>
         <div className="login__button-container">
           <button className="login__button" type="submit">
             Зарегистрироваться

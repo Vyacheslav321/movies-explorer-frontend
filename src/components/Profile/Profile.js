@@ -25,7 +25,9 @@ function Profile({ loggedIn, handleSignOut }) {
           <div className="profile__container">
             <p className="profile__label text__white">Имя</p>
             <input
-              className={`profile__input text__normal text__white ${editProfile ? "profile__active" : ""}`}
+              className={`profile__input text__normal text__white ${
+                editProfile ? "profile__active" : ""
+              }`}
               id="name"
               name="name"
               type="text"
@@ -33,7 +35,6 @@ function Profile({ loggedIn, handleSignOut }) {
               placeholder="Виталий"
               required
               disabled={!editProfile}
-              // value="Виталий"
               // value={name}
             ></input>
           </div>
@@ -49,7 +50,6 @@ function Profile({ loggedIn, handleSignOut }) {
               placeholder="pochta@yandex.ru"
               required
               disabled={!editProfile}
-              // value="pochta@yandex.ru"
               // value={email}
             ></input>
           </div>
@@ -61,7 +61,9 @@ function Profile({ loggedIn, handleSignOut }) {
             описание ошибки
           </p>
           <button
-            className={`profile__button text__white ${editProfile ? "" : "profile__hide"}`}
+            className={`profile__button text__white ${
+              editProfile ? "" : "profile__hide"
+            }`}
             type="submit"
           >
             Сохранить

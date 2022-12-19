@@ -11,7 +11,7 @@ function Header({ loggedIn, onClose, main }) {
     >
       <div className="header__container">
         <Link to="/" className="header__logo" />
-        <Navigation loggedIn={loggedIn} onClose={onClose} main={main}/>
+        <Navigation loggedIn={loggedIn} onClose={onClose} main={main} />
       </div>
     </header>
   );

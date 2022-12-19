@@ -7,7 +7,7 @@ import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 import "./Main.css";
 
-function Main({loggedIn}) {
+function Main({ loggedIn }) {
   return (
     <main className="main">
       <Header loggedIn={loggedIn} main={true} />

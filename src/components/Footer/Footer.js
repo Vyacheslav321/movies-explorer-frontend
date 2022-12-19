@@ -11,13 +11,17 @@ function Footer() {
         <div className="footer__link-wrapper">
           <a
             className="footer__link text__normal text__link text__white"
-            href="#"
+            href="https://practicum.yandex.ru/"
+            target="_blank"
+            rel="noreferrer"
           >
             Яндекс.Практикум
           </a>
           <a
             className="footer__link text__normal text__link text__white"
-            href="#"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
           >
             Github
           </a>

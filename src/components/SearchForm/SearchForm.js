@@ -34,7 +34,6 @@ function SearchForm({ inProgress }) {
         <Checkbox onChange={handleCheckbox} isChecked={switchChecked} />
         <div className="search-forn__line"></div>
       </form>
-
     </nav>
   );
 }
