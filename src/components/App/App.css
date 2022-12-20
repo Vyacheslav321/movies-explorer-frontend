@@ -6,48 +6,59 @@
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-background: #202020;
+  --color-landing-header: #073042;
+  --color-line: #424242;
+  --color-border-white: #DADADA;
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-gray: #8B8B8B;
+  --color-gray-light: #A0A0A0;
+  --color-blue: #4285f4;
+  --color-red: #ee3465;
+  --color-green: #3ddc84;
 }
 
-.text__normal {
+.text-normal {
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.text__white {
+.text-white {
   color: #FFF;
 }
 
-.text__black {
+.text-black {
   color: #000;
 }
 
-.text__gray {
+.text-gray {
   color: #8B8B8B;
 }
 
-.text__gray-light {
+.text-gray-light {
   color: #A0A0A0;
 }
 
-.text__header {
+.text-header {
   font-size: 18px;
   line-height: 22px;
   letter-spacing: -0.04em;
 }
 
-.text__subheader {
+.text-subheader {
   font-size: 18px;
   line-height: 22px;
   letter-spacing: -0.04em;
 }
 
-.text__description {
+.text-description {
   font-size: 11px;
   line-height: 16px;
 }
 
-.text__link {
+.text-link {
   font-size: 12px;
   line-height: 15px;
 }
@@ -57,29 +68,29 @@
 }
 
 @media screen and (min-width: 768px) {
-  .text__header {
+  .text-header {
     font-size: 22px;
     line-height: 27px;
   }
 
-  .text__subheader {
+  .text-subheader {
     font-size: 20px;
     line-height: 24px;
   }
 
-  .text__description {
+  .text-description {
     font-size: 12px;
     line-height: 18px;
   }
   
-  .text__link {
+  .text-link {
     font-size: 13px;
     line-height: 16px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .text__description {
+  .text-description {
     font-size: 14px;
     line-height: 20px;
   }

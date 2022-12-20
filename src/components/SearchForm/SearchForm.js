@@ -32,7 +32,7 @@ function SearchForm({ inProgress }) {
         </fieldset>
 
         <Checkbox onChange={handleCheckbox} isChecked={switchChecked} />
-        <div className="search-forn__line"></div>
+        <div className="search-form__line"></div>
       </form>
     </nav>
   );

@@ -5,8 +5,8 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  background: #202020;
-  color: #fff;
+  background: var(--color-background);
+  color: var(--color-white);
 }
 
 .profile__header {
@@ -29,14 +29,19 @@
   align-content: center;
   align-items: center;
   position: relative;
-}
-
-.profile__wrap_type_page {
   height: 100vh;
   justify-content: space-between;
 }
 
-.profile__wrap_type_footer {
+.profile__footer {
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  position: relative;
   justify-content: end;
 }
 
@@ -63,6 +68,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
+  color: var(--color-white);
   text-align: left;
   flex: 1;
 }
@@ -70,10 +76,14 @@
 .profile__input {
   margin: 0;
   padding: 0;
-  background-color: #202020;
-  border: 0 none #fff;
+  background-color: var(--color-background);
+  border: 0 none var(--color-white);
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 11px;
   line-height: 13px;
+  color: var(--color-white);
   text-align: right;
   flex: 1;
 }
@@ -82,13 +92,13 @@
   outline: 0;
   outline-offset: 0;
   border: 0;
-  border-bottom: 1px solid #4285F4;
+  border-bottom: 1px solid var(--color-blue);
 }
 
 .profile__line {
   margin: 5px 0 7px;
   padding: 0;
-  border-bottom: 1px solid #424242;
+  border-bottom: 1px solid var(--color-line)
 }
 
 .profile__error {
@@ -100,9 +110,12 @@
   padding: 0;
   max-width: 75vw;
   min-height: 24px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 10px;
   line-height: 12px;
-  color: #ee3465;
+  color: var(--color-red);
   text-align: center;
 }
 
@@ -117,7 +130,7 @@
   width: 100%;
   max-width: 260px;
   min-height: 45px;
-  background: #4285f4;
+  background: var(--color-blue);
   border: 0;
   border-radius: 3px;
   font-family: "Inter", Arial, sans-serif;
@@ -125,6 +138,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
+  color: var(--color-white);
 }
 
 .profile__button:hover {
@@ -134,10 +148,14 @@
 .profile__edit {
   margin: 60px 0 16px;
   padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 12px;
   line-height: 15px;
-  background-color: #202020;
-  border: 0 solid #202020;
+  color: var(--color-white);
+  background-color: var(--color-background);
+  border: 0 solid var(--color-background);
   cursor: pointer;
 }
 
@@ -151,11 +169,11 @@
   padding: 0;
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   text-align: center;
-  color: #ee3465;
+  color: var(--color-red);
   text-decoration: none;
 }
 
@@ -193,7 +211,7 @@
     margin: 236px auto 86px;
   }
 
-  .profile__wrap_type_page {
+  .profile__wrap {
     height: 100vh;
     justify-content: start;
   }
@@ -228,7 +246,7 @@
     margin: 74px auto 123px;
   }
 
-  .profile__wrap_type_page {
+  .profile__wrap {
     height: 100vh;
   }
 

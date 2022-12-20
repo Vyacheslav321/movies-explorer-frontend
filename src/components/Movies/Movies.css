@@ -1,5 +1,5 @@
 .movies {
   margin: 0;
   padding: 0;
-  background: #202020;
+  background: var(--color-background);
 }

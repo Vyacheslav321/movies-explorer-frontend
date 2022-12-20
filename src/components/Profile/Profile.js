@@ -20,12 +20,12 @@ function Profile({ loggedIn, handleSignOut }) {
     <nav className={`profile ${loggedIn ? "" : "profile__hide"}`}>
       <Header loggedIn={loggedIn} main={false} />
       <h2 className="profile__header">Привет, Виталий!</h2>
-      <div className="profile__wrap profile__wrap_type_page">
+      <div className="profile__wrap">
         <form className="profile__form" onSubmit={handleSubmit}>
           <div className="profile__container">
-            <p className="profile__label text__white">Имя</p>
+            <p className="profile__label">Имя</p>
             <input
-              className={`profile__input text__normal text__white ${
+              className={`profile__input ${
                 editProfile ? "profile__active" : ""
               }`}
               id="name"
@@ -40,9 +40,9 @@ function Profile({ loggedIn, handleSignOut }) {
           </div>
           <div className="profile__line"></div>
           <div className="profile__container">
-            <p className="profile__label text__white">E-mail</p>
+            <p className="profile__label">E-mail</p>
             <input
-              className="profile__input text__normal text__white"
+              className="profile__input"
               id="email"
               name="email"
               type="email"
@@ -53,42 +53,30 @@ function Profile({ loggedIn, handleSignOut }) {
               // value={email}
             ></input>
           </div>
-          <p
-            className={`profile__error text__normal ${
-              editProfile ? "" : "profile__hide"
-            }`}
-          >
+          <p className={`profile__error ${editProfile ? "" : "profile__hide"}`}>
             описание ошибки
           </p>
           <button
-            className={`profile__button text__white ${
-              editProfile ? "" : "profile__hide"
-            }`}
+            className={`profile__button ${editProfile ? "" : "profile__hide"}`}
             type="submit"
           >
             Сохранить
           </button>
         </form>
-        <div>
-          <div className="profile__wrap profile__wrap_type_footer">
-            <div
-              className={`profile__edit text__white ${
-                editProfile ? "profile__hide" : ""
-              }`}
-              onClick={handleEditProfile}
-            >
-              Редактировать
-            </div>
-            <Link
-              to="/"
-              className={`profile__exit text__normal text__white ${
-                editProfile ? "profile__hide" : ""
-              }`}
-              onClick={handleSignOut}
-            >
-              Выйти из аккаунта
-            </Link>
+        <div className="profile__footer">
+          <div
+            className={`profile__edit ${editProfile ? "profile__hide" : ""}`}
+            onClick={handleEditProfile}
+          >
+            Редактировать
           </div>
+          <Link
+            to="/"
+            className={`profile__exit ${editProfile ? "profile__hide" : ""}`}
+            onClick={handleSignOut}
+          >
+            Выйти из аккаунта
+          </Link>
         </div>
       </div>
     </nav>

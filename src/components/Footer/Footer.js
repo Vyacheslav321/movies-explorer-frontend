@@ -1,32 +1,33 @@
 import "./Footer.css";
 import "../App/App.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <footer className="footer">
-      <h3 className="footer__description text__normal text__link text__gray">
+      <h3 className="footer__description">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </h3>
       <div className="footer__wrapper">
         <div className="footer__link-wrapper">
-          <a
-            className="footer__link text__normal text__link text__white"
-            href="https://practicum.yandex.ru/"
+          <Link
+            to="https://practicum.yandex.ru/"
+            className="footer__link"
             target="_blank"
             rel="noreferrer"
           >
             Яндекс.Практикум
-          </a>
-          <a
-            className="footer__link text__normal text__link text__white"
-            href="https://github.com/"
+          </Link>
+          <Link
+            to="https://github.com/"
+            className="footer__link"
             target="_blank"
             rel="noreferrer"
           >
             Github
-          </a>
+          </Link>
         </div>
-        <p className="footer__copyright text__normal text__link text__gray">
+        <p className="footer__copyright">
           &#169; 2022
         </p>
       </div>

@@ -2,7 +2,7 @@ import "./Checkbox.css";
 
 function Checkbox({ onChange, isChecked }) {
   return (
-    <label className="check-box text__normal text__white">
+    <label className="check-box">
       <input
         type="checkbox"
         className="check-box__switcher"

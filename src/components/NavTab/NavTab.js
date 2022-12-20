@@ -11,7 +11,7 @@ function NavTab({ isMenuHide, onCloseMenu }) {
 
   return (
     <section
-      className={`nav-tab__burger-menu ${isMenuHide ? "" : "visible"}`}
+      className={`nav-tab nav-tab__burger-menu ${isMenuHide ? "" : "visible"}`}
       onClick={handleOverlayClick}
     >
       <button
@@ -26,26 +26,26 @@ function NavTab({ isMenuHide, onCloseMenu }) {
         <div className="nav-tab__burger-links">
           <Link
             to="/"
-            className="nav-tab__burger-link text__normal text__white"
+            className="nav-tab__burger-link"
           >
             Главная
           </Link>
           <Link
             to="/movies"
-            className="nav-tab__burger-link text__normal text__white"
+            className="nav-tab__burger-link"
           >
             Фильмы
           </Link>
           <Link
             to="/saved-movies"
-            className="nav-tab__burger-link text__normal text__white"
+            className="nav-tab__burger-link"
           >
             Сохранённые фильмы
           </Link>
         </div>
         <Link to="/profile" className="nav-tab__burger-profile">
           <div className="navigation__account">
-            <h3 className="navigation__account-text text__normal text__white">
+            <h3 className="navigation__account-text">
               Аккаунт
             </h3>
             <div className="navigation__account-round">

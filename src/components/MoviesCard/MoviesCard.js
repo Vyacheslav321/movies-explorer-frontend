@@ -31,7 +31,7 @@ function MoviesCard({ savedFilms }) {
       <div
         className={`movie-card__button  ${
           !savedFilms && !selectedMovie
-            ? "movie-card__button_type_unselect text__normal text__white"
+            ? "movie-card__button_type_unselect text-normal text-white"
             : "movie-card__hide"
         }`}
         onClick={handleSelectMovie}
@@ -39,8 +39,8 @@ function MoviesCard({ savedFilms }) {
         Сохранить
       </div>
       <div className="movies-card__wrap">
-        <h3 className="movies-card__header text__white">33 слова о дизайне</h3>
-        <p className="movies-card__duration text__normal text__gray">1ч 17м</p>
+        <h3 className="movies-card__header text-white">33 слова о дизайне</h3>
+        <p className="movies-card__duration text-normal text-gray">1ч 17м</p>
       </div>
     </div>
   );

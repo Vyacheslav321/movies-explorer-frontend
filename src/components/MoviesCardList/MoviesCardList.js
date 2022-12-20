@@ -27,7 +27,7 @@ function MoviesCardList({ savedFilms }) {
         <MoviesCard savedFilms={savedFilms} />
       </div>
       <button
-        className={`movies-card-list__more-button text__white  ${
+        className={`movies-card-list__more-button ${
           savedFilms ? "movies-card-list__hide" : ""
         }`}
         onClick={handleMoreMovies}

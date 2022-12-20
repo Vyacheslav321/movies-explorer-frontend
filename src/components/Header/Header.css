@@ -4,11 +4,11 @@
 }
 
 .header_color_landing {
-  background-color: #073042;
+  background-color: var(--color-landing-header);
 }
 
 .header_color_movies {
-  background-color: #202020;
+  background-color: var(--color-background);
 }
 
 .header__container {

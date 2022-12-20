@@ -1,13 +1,6 @@
-.nav-tab__burger-close-button {
-  position: absolute;
-  background: url("../../images/icon-close.svg") center no-repeat;
-  border: none;
-  height: 22px;
-  width: 22px;
-  top: 18px;
-  right: 18px;
-  cursor: pointer;
-  z-index: 10;
+.nav-tab {
+  margin: 0;
+  padding: 0;
 }
 
 .nav-tab__burger-menu {
@@ -16,8 +9,6 @@
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -28,6 +19,18 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.2s ease-in, opacity 0.2s ease-in;
+}
+
+.nav-tab__burger-close-button {
+  position: absolute;
+  background: url("../../images/icon-close.svg") center no-repeat;
+  border: none;
+  height: 22px;
+  width: 22px;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .nav-tab__burger-container {
@@ -42,7 +45,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background: #202020;
+  background: var(--color-background);
   opacity: 1;
 }
 
@@ -60,16 +63,19 @@
   max-width: fit-content;
   margin: 0;
   padding: 0 0 24px;
-  text-decoration: none;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-style: normal;
   font-size: 18px;
   line-height: 22px;
-  font-weight: 500;
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 .nav-tab__burger-link:hover {
   margin: 0 0 16px;
   padding: 0 0 6px;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--color-white);
 }
 
 .nav-tab__burger-profile {

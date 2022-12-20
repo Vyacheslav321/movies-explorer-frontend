@@ -2,10 +2,14 @@
   margin: 0 auto;
   padding: 0;
   display: flex;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   column-gap: 13px;
   align-items: center;
   font-size: 11px;
   line-height: 18px;
+  color: var(--color-white);
 }
 
 .check-box__switcher {
@@ -28,7 +32,7 @@
 
 .check-box__switcher:checked {
   background-position: center right 2px;
-  background-color: #3ddc84;
+  background-color: var(--color-green);
   background-image: url('data:image/svg+xml,%3C%3Fxml version="1.0"%3F%3E%3Csvg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"%3E%3Ccircle cx="8" cy="8" fill="%23FFFFFF" r="8"/%3E%3C/svg%3E');
 }
 

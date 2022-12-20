@@ -14,9 +14,9 @@ function Login(props) {
         <Link to="/" className="header__logo" />
         <h2 className="login__welcome">Рады видеть!</h2>
         <form className="login__form" onSubmit={handleLogin}>
-          <p className="login__label text__normal text__gray">E-mail</p>
+          <p className="login__label">E-mail</p>
           <input
-            className="login__input text__white"
+            className="login__input"
             id="email"
             name="email"
             type="email"
@@ -27,9 +27,9 @@ function Login(props) {
             // value={email}
           ></input>
           <div className="login__line"></div>
-          <p className="login__label text__normal text__gray">Пароль</p>
+          <p className="login__label">Пароль</p>
           <input
-            className="login__input text__white"
+            className="login__input"
             id="password"
             name="password"
             type="password"
@@ -40,7 +40,7 @@ function Login(props) {
             // value={password}
           ></input>
           <div className="login__line"></div>
-          <p className="login__error login__error_place_last text__normal">
+          <p className="login__error login__error_place_last">
             Что-то пошло не так...
           </p>
           <div className="login__button-container">
@@ -50,9 +50,9 @@ function Login(props) {
           </div>
         </form>
       </div>
-      <p className="login__footer text__normal text__gray">
+      <p className="login__footer">
         Ещё не зарегистрированы?
-        <Link to="/signup" className="login__link text__normal">
+        <Link to="/signup" className="login__link">
           Регистрация
         </Link>
       </p>

@@ -21,7 +21,7 @@
   padding: 0;
   width: 240px;
   min-height: 36px;
-  border: 1px solid #424242;
+  border: 1px solid var(--color-line);
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -31,9 +31,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #202020;
+  background-color: var(--color-background);
 }
-
 
 @media screen and (min-width: 768px) {
   .movies-card-list__wrap {
@@ -55,6 +54,7 @@
   .movies-card-list__more-button {
     margin: 0 auto 80px;
     width: 320px;
+    color: var(--color-white);
   }
 }
 
@@ -65,7 +65,7 @@
     grid-template-rows: repeat(1, 1fr);
     row-gap: 58px;
   }
-  
+
   .movies-card-list__wrap_type_movies {
     margin: 7px 0 74px;
   }
