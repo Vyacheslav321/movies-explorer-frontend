@@ -1,10 +1,7 @@
 .navigation {
   margin: 0;
   padding: 0;
-}
-
-.navigation__wrap {
-  width: 87%;
+  /* width: 100%; */
   min-height: 42px;
   display: flex;
   justify-content: space-between;
@@ -12,19 +9,27 @@
   align-items: center;
 }
 
-.navigation__wrap_position_right {
-  justify-content: flex-end;
-}
-
 .navigation__container {
-  margin: 0 0 0 37px;
+  margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
   align-content: center;
   align-items: center;
+}
+
+.navigation__logo {
+  background: url("../../images/header__logo.svg") center no-repeat;
+  margin: 0;
+  padding: 0;
+  width: 38px;
+  height: 38px;
+}
+
+.navigation__logo:hover {
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
 }
 
 .navigation__text {
@@ -45,19 +50,20 @@
 }
 
 .navigation__text_type_movies {
-  font-size: 18px;
-  line-height: 22px;
   display: none;
 }
 
 .navigation__text_type_saved-movies {
-  font-size: 18px;
-  line-height: 22px;
   display: none;
 }
 
-.navigation__text_type_signin {
+.navigation__text_type_signup {
   margin-right: 14px;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.navigation__text_type_signin {
   padding: 5px 0;
   min-width: 54px;
   font-size: 10px;
@@ -136,23 +142,16 @@
 }
 
 @media screen and (min-width: 768px) {
+  .navigation__wrap {
+    width: 100%;
+  }
+
   .navigation__text {
     padding: 0 0 0 16px;
   }
 
-  .navigation__text_type_movies {
-    padding-left: 8px;
-    font-size: 18px;
-    line-height: 22px;
-  }
-
-  .navigation__text_type_saved-movies {
-    font-size: 18px;
-    line-height: 22px;
-  }
-
   .navigation__text_type_signup {
-    margin-right: 30px;
+    margin-right: 31px;
     font-size: 12px;
     line-height: 16px;
   }
@@ -163,7 +162,7 @@
     font-size: 12px;
     line-height: 16px;
   }
-
+  
   .navigation__burger {
     margin: 0;
     width: 44px;
@@ -171,13 +170,9 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .navigation__wrap {
-    width: 97%;
-  }
-
+@media screen and (min-width: 769px) {
   .navigation__text_type_movies {
-    padding: 0 0 0 4px;
+    padding: 0 0 0 41px;
     min-width: 61px;
     font-size: 13px;
     line-height: 18px;
@@ -187,7 +182,6 @@
   .navigation__text_type_saved-movies {
     padding: 0 0 0 4px;
     min-width: 158px;
-    font-weight: 400;
     font-size: 13px;
     line-height: 18px;
     display: block;

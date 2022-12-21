@@ -14,33 +14,33 @@ function MoviesCard({ savedFilms }) {
   return (
     <div className="movies-card">
       <img className="movies-card__image" src={Pic} alt="card" />
-      <div
+      <button
         className={`movie-card__button  ${
           savedFilms ? "movie-card__button_type_delete" : "movie-card__hide"
         }`}
         onClick={handleDeleteMovie}
-      ></div>
-      <div
+      ></button>
+      <button
         className={`movie-card__button ${
           !savedFilms && selectedMovie
             ? "movie-card__button_type_select"
             : "movie-card__hide"
         }`}
         onClick={handleSelectMovie}
-      ></div>
-      <div
+      ></button>
+      <button
         className={`movie-card__button  ${
           !savedFilms && !selectedMovie
-            ? "movie-card__button_type_unselect text-normal text-white"
+            ? "movie-card__button_type_unselect"
             : "movie-card__hide"
         }`}
         onClick={handleSelectMovie}
       >
         Сохранить
-      </div>
+      </button>
       <div className="movies-card__wrap">
-        <h3 className="movies-card__header text-white">33 слова о дизайне</h3>
-        <p className="movies-card__duration text-normal text-gray">1ч 17м</p>
+        <h3 className="movies-card__header">33 слова о дизайне</h3>
+        <p className="movies-card__duration">1ч 17м</p>
       </div>
     </div>
   );

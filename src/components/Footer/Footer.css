@@ -63,6 +63,11 @@
     padding: 80px 30px 20px;
   }
 
+  .footer__description {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
   .footer__wrapper {
     margin: 19px 0 0;
     display: flex;
@@ -74,12 +79,19 @@
     margin: 0;
     flex-direction: row;
     justify-content: flex-end;
-    align-content:space-between;
+    align-content: space-between;
     align-items: center;
   }
 
   .footer__link {
     margin: 0 0 0 21px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .footer__copyright {
+    font-size: 13px;
+    line-height: 16px;
   }
 }
 

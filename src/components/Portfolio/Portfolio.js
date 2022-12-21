@@ -3,7 +3,7 @@ import "../App/App.css";
 
 function Portfolio() {
   return (
-    <nav className="portfolio">
+    <section className="portfolio">
       <h2 className="portfolio__header">Портфолио</h2>
       <a
         className="portfolio__link portfolio__line"
@@ -32,7 +32,7 @@ function Portfolio() {
         <p className="portfolio__text-link">Одностраничное приложение</p>
         <p className="portfolio__arrow">&#8599;</p>
       </a>
-    </nav>
+    </section>
   );
 }
 

@@ -4,7 +4,7 @@
 }
 
 .search-form__form {
-  margin: 80px 15px 0px;
+  margin: 80px 5px 0px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -63,6 +63,11 @@
   background: url(../../images/icon-search.svg) center no-repeat;
   background-color: var(--color-blue);
   cursor: pointer;
+}
+
+.search-form__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
 }
 
 .search-form__line {

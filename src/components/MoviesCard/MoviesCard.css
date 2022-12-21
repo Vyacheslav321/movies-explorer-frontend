@@ -3,7 +3,7 @@
   padding: 0;
   width: 300px;
   height: 202px;
-  background-color: #202020;
+  background-color: var(--color-background);
   position: relative;
 }
 
@@ -18,6 +18,7 @@
 
 .movie-card__button {
   margin: 10px;
+  border: none;
   border-radius: 30px;
   position: absolute;
   top: 0;
@@ -26,13 +27,21 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.movie-card__button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
 }
 
 .movie-card__button_type_select {
   padding: 0;
   width: 21px;
   height: 21px;
-  background-color: #ee3465;
+  background-color: var(--color-red);
   background-image: url(../../images/icon-save.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -45,7 +54,8 @@
   min-height: 21px;
   font-size: 10px;
   line-height: 9px;
-  background: #313131;
+  background-color: #313131;
+  color: var(--color-white);
 }
 
 .movie-card__button_type_delete {
@@ -76,22 +86,27 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
+  color: var(--color-white);
 }
 
 .movies-card__duration {
   margin: 0;
   padding: 0;
+  border: 0;
+  border-radius: 3px;
   min-width: 52px;
   min-height: 18px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: 11px;
   line-height: 10px;
+  color: var(--color-gray);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: #2f2f2f;
-  border: 0;
-  border-radius: 3px;
+  background: #2F2F2F;
 }
 
 .movie-card__hide {

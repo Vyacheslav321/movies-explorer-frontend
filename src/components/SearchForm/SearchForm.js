@@ -10,12 +10,11 @@ function SearchForm({ inProgress }) {
   }
 
   function handleCheckbox() {
-    console.log("switchChecked = " + switchChecked);
     setSwitchChecked(!switchChecked);
   }
 
   return (
-    <nav className="search-form">
+    <section className="search-form">
       <form className="search-form__form" onSubmit={handleSearch}>
         <fieldset className="search-form__field">
           <input
@@ -34,7 +33,7 @@ function SearchForm({ inProgress }) {
         <Checkbox onChange={handleCheckbox} isChecked={switchChecked} />
         <div className="search-form__line"></div>
       </form>
-    </nav>
+    </section>
   );
 }
 

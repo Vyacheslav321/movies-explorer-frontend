@@ -9,15 +9,17 @@ import "./Main.css";
 
 function Main({ loggedIn }) {
   return (
-    <main className="main">
+    <>
       <Header loggedIn={loggedIn} main={true} />
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main className="main">
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
 

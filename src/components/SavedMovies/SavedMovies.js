@@ -7,12 +7,14 @@ import "../Movies/Movies.css";
 
 function SavedMovies({ loggedIn }) {
   return (
-    <nav className="movies">
+    <>
       <Header loggedIn={loggedIn} main={false} />
-      <SearchForm />
-      <MoviesCardList savedFilms={true} />
+      <main className="movies">
+        <SearchForm />
+        <MoviesCardList savedFilms={true} />
+      </main>
       <Footer />
-    </nav>
+    </>
   );
 }
 

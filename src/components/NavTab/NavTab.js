@@ -11,7 +11,7 @@ function NavTab({ isMenuHide, onCloseMenu }) {
 
   return (
     <section
-      className={`nav-tab nav-tab__burger-menu ${isMenuHide ? "" : "visible"}`}
+      className={`nav-tab ${isMenuHide ? "" : "visible"}`}
       onClick={handleOverlayClick}
     >
       <button

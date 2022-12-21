@@ -27,9 +27,7 @@ function Footer() {
             Github
           </Link>
         </div>
-        <p className="footer__copyright">
-          &#169; 2022
-        </p>
+        <p className="footer__copyright">&#169; 2022</p>
       </div>
     </footer>
   );

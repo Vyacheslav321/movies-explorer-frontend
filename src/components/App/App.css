@@ -1,4 +1,10 @@
+body {
+  background-color: #202020;
+}
+
 .page {
+  max-width: 1280px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   font-family: "Inter", Arial, sans-serif;
@@ -14,84 +20,11 @@
   --color-black: #000;
   --color-gray: #8B8B8B;
   --color-gray-light: #A0A0A0;
-  --color-blue: #4285f4;
-  --color-red: #ee3465;
-  --color-green: #3ddc84;
-}
-
-.text-normal {
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.text-white {
-  color: #FFF;
-}
-
-.text-black {
-  color: #000;
-}
-
-.text-gray {
-  color: #8B8B8B;
-}
-
-.text-gray-light {
-  color: #A0A0A0;
-}
-
-.text-header {
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: -0.04em;
-}
-
-.text-subheader {
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: -0.04em;
-}
-
-.text-description {
-  font-size: 11px;
-  line-height: 16px;
-}
-
-.text-link {
-  font-size: 12px;
-  line-height: 15px;
+  --color-blue: #4285F4;
+  --color-red: #EE3465;
+  --color-green: #3DDC84;
 }
 
 .no-display {
   display: none;
-}
-
-@media screen and (min-width: 768px) {
-  .text-header {
-    font-size: 22px;
-    line-height: 27px;
-  }
-
-  .text-subheader {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .text-description {
-    font-size: 12px;
-    line-height: 18px;
-  }
-  
-  .text-link {
-    font-size: 13px;
-    line-height: 16px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .text-description {
-    font-size: 14px;
-    line-height: 20px;
-  }
 }
