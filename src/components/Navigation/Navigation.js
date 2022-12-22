@@ -20,7 +20,7 @@ function Navigation({ loggedIn, main }) {
       className="navigation"
     >
       <div className="navigation__container">
-        <Link to="/" className="navigation__logo" />
+        <Link to="/" className="logo" />
         <Link
           to="/movies"
           className={`navigation__text navigation__text_type_movies ${

@@ -13,7 +13,7 @@ function Login(props) {
   return (
     <section className="login">
       <div className="login__header">
-        <Link to="/" className="navigation__logo" />
+        <Link to="/" className="logo" />
         <h2 className="login__welcome">Рады видеть!</h2>
         <form className="login__form" onSubmit={handleLogin}>
           <p className="login__label">E-mail</p>
