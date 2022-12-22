@@ -1,0 +1,131 @@
+.promo {
+  margin: 0;
+  padding: 0 0 40px;
+  background: var(--color-landing-header);
+}
+
+.promo__wrap {
+  margin: 0;
+  padding: 0;
+}
+
+.promo__text-wrap {
+  margin: 0;
+  padding: 0;
+}
+
+.promo__landing-logo {
+  margin: 70px 0 41px 0;
+  width: 65.625%;
+  height: 65.625%;
+}
+
+.promo__header {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: -0.04em;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.promo__description {
+  margin: 24px 24px 87px;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--color-white);
+  mix-blend-mode: normal;
+}
+
+.promo__button {
+  margin: 0;
+  padding: 9px 20px 10px 19px;
+  border: 1px solid var(--color-white);
+  border-radius: 3px;
+  background: var(--color-landing-header);
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+@media screen and (min-width: 750px) {
+  .promo {
+    padding: 0 44px 40px;
+    background: var(--color-landing-header);
+  }
+
+  .promo__landing-logo {
+    margin: 140px 0 46px 0;
+    width: 45.588%;
+  }
+
+  .promo__header {
+    font-size: 40px;
+    line-height: 125%;
+    letter-spacing: 0;
+  }
+
+  .promo__description {
+    margin: 21px auto 99px;
+    max-width: 260px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .promo {
+    padding: 75px 70px 85px;
+    text-align: start;
+  }
+
+  .promo__wrap {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-content: flex-start;
+    gap: 190px;
+  }
+
+  .promo__text-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: flex-start;
+    justify-items: start;
+    align-items: flex-start;
+  }
+
+  .promo__landing-logo {
+    margin: 0;
+    width: 27.194%;
+  }
+
+  .promo__header {
+    font-size: 50px;
+    line-height: 116%;
+    text-align: left;
+  }
+
+  .promo__description {
+    margin: 36px 0 153px;
+    min-width: 310px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}

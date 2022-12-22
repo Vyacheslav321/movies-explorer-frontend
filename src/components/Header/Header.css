@@ -1,0 +1,24 @@
+.header {
+  margin: 0;
+  padding: 16px 14px;
+}
+
+.header_color_landing {
+  background-color: var(--color-landing-header);
+}
+
+.header_color_movies {
+  background-color: var(--color-background);
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 16px 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 16px 70px;
+  }
+}

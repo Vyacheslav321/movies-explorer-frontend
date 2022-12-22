@@ -1,0 +1,30 @@
+body {
+  background-color: #202020;
+}
+
+.page {
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --color-background: #202020;
+  --color-landing-header: #073042;
+  --color-line: #424242;
+  --color-border-white: #DADADA;
+  --color-white: #FFF;
+  --color-black: #000;
+  --color-gray: #8B8B8B;
+  --color-gray-light: #A0A0A0;
+  --color-blue: #4285F4;
+  --color-red: #EE3465;
+  --color-green: #3DDC84;
+}
+
+.no-display {
+  display: none;
+}

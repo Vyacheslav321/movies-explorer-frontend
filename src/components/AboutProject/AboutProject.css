@@ -1,0 +1,235 @@
+.about-project {
+  margin: 0;
+  padding: 14px 18px 70px;
+  text-align: start;
+}
+
+.about-project__cards {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-project__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  text-align: start;
+  margin: 0;
+  padding: 0;
+}
+
+.about-project__headers {
+  margin: 57px 0 15px 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  color: var(--color-white);
+}
+
+.about-project__subheader {
+  margin: 50px 0 10px 0;
+  padding: 7px 0 5px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  color: var(--color-white);
+}
+
+.about-project__description {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--color-white);
+}
+
+.about-project__line {
+  margin-bottom: 4px;
+  padding: 0 0 27px 0;
+  border-bottom: 1px solid var(--color-border-white);
+}
+
+.about-project__scale {
+  margin: 60px 0 0 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+}
+
+.about-project__scale-column {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.about-project__scale-column_first {
+  width: 20.95%;
+  min-width: 100px;
+}
+
+.about-project__scale-column_second {
+  width: calc(100% - 20.95%);
+  min-width: 184px;
+}
+
+.about-project__scale-box {
+  margin: 0;
+  padding: 11px 0 11px 1px;
+  width: 100%;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  justify-content: center;
+}
+
+.about-project__scale-box_week_first {
+  background: var(--color-green);
+  color: var(--color-black);
+}
+
+.about-project__scale-box_week_second {
+  background: #303030;
+  color: var(--color-white);
+}
+
+.about-project__scale-description {
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-family: "Suisse", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: var(--color-gray-light);
+}
+
+@media screen and (min-width: 768px) {
+  .about-project {
+    margin: 0;
+    padding: 90px 50px;
+    text-align: start;
+  }
+
+  .about-project__cards {
+    flex-direction: row;
+    column-gap: 30px;
+  }
+
+  .about-project__card {
+    display: flex;
+    flex: 1;
+    row-gap: 22px;
+    justify-content: start;
+    align-items: flex-start;
+    text-align: start;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-project__headers {
+    margin: 47px 0 15px;
+    padding: 0;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .about-project__subheader {
+    margin: 55px 0 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .about-project__description {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-project__line {
+    padding: 0 0 22px 0;
+  }
+
+  .about-project__scale {
+    margin: 93px 0 0 0;
+  }
+
+  .about-project__scale-box {
+    margin: 0;
+    padding: 9px 0 9px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 17px;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .about-project__scale-description {
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about-project {
+    margin: 0;
+    padding: 110px 70px;
+  }
+
+  .about-project__cards {
+    column-gap: 40px;
+  }
+
+  .about-project__headers {
+    margin: 1px 0 14px;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .about-project__description {
+    margin: 5px 0 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .about-project__scale {
+    margin: 110px 0 0 0;
+  }
+
+  .about-project__scale-column_first {
+    width: 20%;
+    min-width: 100px;
+  }
+
+  .about-project__scale-column_second {
+    width: calc(100% - 20%);
+    min-width: 184px;
+  }
+
+  .about-project__scale-description {
+    margin: 17px 0 0;
+  }
+}
