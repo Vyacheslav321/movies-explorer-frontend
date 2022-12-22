@@ -12,7 +12,7 @@ function Register(props) {
   return (
     <section className="register login">
       <div className="login__header">
-        <Link to="/" className="navigation__logo" />
+        <Link to="/" className="logo" />
         <h2 className="login__welcome">Добро пожаловать!</h2>
       </div>
       <form className="login__form" onSubmit={handleRegister}>
