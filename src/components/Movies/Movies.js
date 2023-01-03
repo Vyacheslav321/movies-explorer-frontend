@@ -4,13 +4,13 @@ import "./Movies.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Movies({ loggedIn }) {
+function Movies({ loggedIn, inProgress }) {
   return (
     <>
       <Header loggedIn={loggedIn} main={false} />
       <main className="movies">
         <SearchForm />
-        <MoviesCardList savedFilms={false} />
+        <MoviesCardList savedFilms={false} inProgress={inProgress}/>
       </main>
       <Footer />
     </>

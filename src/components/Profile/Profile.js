@@ -1,26 +1,64 @@
 // import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { CurrentUserContext } from "../../context/currentUserContext";
+import { useFormWithValidation } from "../../hooks/useFormValidation";
+
 import Header from "../Header/Header";
+import Preloader from "../Preloader/Preloader";
 import "../App/App.css";
 import "./Profile.css";
-import { useState } from "react";
 
-function Profile({ loggedIn, handleSignOut }) {
+function Profile({
+  loggedIn,
+  onEdit,
+  isUpdateProfile,
+  handleSignOut,
+  errorMessage,
+  clearErrorMessages,
+  inProgress,
+}) {
   const [editProfile, setEditProfile] = useState(false);
+  const { values, setValues, handleChange, error, isValid } =
+    useFormWithValidation();
+  const currentUser = useContext(CurrentUserContext);
+
   function handleSubmit(e) {
     e.preventDefault();
-    setEditProfile(!editProfile);
+    setEditProfile(false);
+    onEdit(values.name, values.email);
+    clearErrorMessages();
+  }
+
+  useEffect(() => {
+    setValues(currentUser);
+  }, [currentUser, setValues]);
+
+  useEffect(() => {
+    setEditProfile(!isUpdateProfile);
+  }, [isUpdateProfile, onEdit]);
+
+  useEffect(() => {
+    if (inProgress) {
+      setEditProfile(false);
+    }
+  }, [inProgress]);
+
+  function onCloseEdit() {
+    setEditProfile(false);
+    setValues(currentUser);
   }
 
   function handleEditProfile() {
-    setEditProfile(!editProfile);
+    setEditProfile(true);
   }
 
   return (
     <div className="profile">
+      <Preloader inProgress={inProgress} />
       <Header loggedIn={loggedIn} main={false} />
       <main className="profile__main">
-        <h2 className="profile__header">Привет, Виталий!</h2>
+        <h2 className="profile__header">Привет, {currentUser.name}!</h2>
         <div className="profile__wrap">
           <form className="profile__form" onSubmit={handleSubmit}>
             <div className="profile__container">
@@ -33,10 +71,11 @@ function Profile({ loggedIn, handleSignOut }) {
                 name="name"
                 type="text"
                 autoComplete="name"
-                placeholder="Виталий"
-                required
+                pattern="[а-яА-Яa-zA-ZёË\- ]{1,}"
                 disabled={!editProfile}
-                // value={name}
+                onChange={handleChange}
+                value={values.name || ""}
+                required
               ></input>
             </div>
             <div className="profile__line"></div>
@@ -48,25 +87,37 @@ function Profile({ loggedIn, handleSignOut }) {
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="pochta@yandex.ru"
-                required
                 disabled={!editProfile}
-                // value={email}
+                onChange={handleChange}
+                value={values.email || ""}
+                required
               ></input>
             </div>
             <p
               className={`profile__error ${editProfile ? "" : "profile__hide"}`}
             >
-              описание ошибки
+              {error.name || error.email || errorMessage}
             </p>
-            <button
-              className={`profile__button ${
-                editProfile ? "" : "profile__hide"
-              }`}
-              type="submit"
-            >
-              Сохранить
-            </button>
+            {editProfile ? (
+              <button
+                className={`profile__button ${
+                  isValid ? "" : "profile__button_disabled"
+                }`}
+                type="submit"
+                disabled={!isValid}
+              >
+                Сохранить
+              </button>
+            ) : (
+              ""
+            )}
+            {editProfile ? (
+              <p className="profile__close-edit" onClick={onCloseEdit}>
+                отмена
+              </p>
+            ) : (
+              ""
+            )}
           </form>
           <div className="profile__footer">
             <div

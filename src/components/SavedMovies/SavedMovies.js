@@ -5,13 +5,13 @@ import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 import "../Movies/Movies.css";
 
-function SavedMovies({ loggedIn }) {
+function SavedMovies({ loggedIn, inProgress }) {
   return (
     <>
       <Header loggedIn={loggedIn} main={false} />
       <main className="movies">
         <SearchForm />
-        <MoviesCardList savedFilms={true} />
+        <MoviesCardList savedFilms={true} inProgress={inProgress}/>
       </main>
       <Footer />
     </>

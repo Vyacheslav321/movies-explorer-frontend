@@ -1,19 +1,37 @@
 import "../App/App.css";
 import "./MoviesCard.css";
-import Pic from "../../images/movies/movies__pic-1.jpg";
 import { useState } from "react";
+import { createUserMovie, deleteUserMovie } from "../../utils/MainApi";
 
-function MoviesCard({ savedFilms }) {
+function MoviesCard({ savedFilms, movie }) {
   const [selectedMovie, setSelectedMovie] = useState(false);
-
+  const token = localStorage.getItem("jwt");
+  
   function handleSelectMovie() {
+    createUserMovie(
+      movie.country,
+      movie.director,
+      movie.duration,
+      movie.year,
+      movie.description,
+      movie.image.url,
+      // https://api.nomoreparties.co  +  /uploads/small_all_tommoros_parties_33a125248d.jpeg
+      movie.trailerLink,
+      movie.thumbnail,
+      movie.movieId,
+      movie.nameRU,
+      movie.nameEN,
+      token
+    )
     setSelectedMovie(!selectedMovie);
   }
-  function handleDeleteMovie() {}
+  function handleDeleteMovie() {
+    deleteUserMovie(movie.id, token);
+  }
 
   return (
     <div className="movies-card">
-      <img className="movies-card__image" src={Pic} alt="card" />
+      <img className="movies-card__image" src={movie.image} alt={movie.nameRU || movie.nameEN} />
       <button
         className={`movie-card__button  ${
           savedFilms ? "movie-card__button_type_delete" : "movie-card__hide"
@@ -39,8 +57,8 @@ function MoviesCard({ savedFilms }) {
         Сохранить
       </button>
       <div className="movies-card__wrap">
-        <h3 className="movies-card__header">33 слова о дизайне</h3>
-        <p className="movies-card__duration">1ч 17м</p>
+        <h3 className="movies-card__header">{movie.nameRU || movie.nameEN}</h3>
+        <p className="movies-card__duration">{movie.duration}</p>
       </div>
     </div>
   );
