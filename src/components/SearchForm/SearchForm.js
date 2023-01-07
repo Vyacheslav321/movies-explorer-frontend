@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormWithValidation } from "../../hooks/useFormValidation";
+
 import Checkbox from "../Checkbox/Checkbox";
 import "./SearchForm.css";
 
-function SearchForm({ inProgress }) {
-  const [switchChecked, setSwitchChecked] = useState(true);
+function SearchForm({
+  isSavedFilms,
+  onSearchMovies,
+  onSearchUserMovies,
+  handleShortMoviesChecked,
+  isShortMoviesChecked,
+}) {
 
-  function handleSearch(e) {
+  const { values, handleChange, error, isValid } =
+    useFormWithValidation();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  function handleSearchMovies(e) {
     e.preventDefault();
+    isValid
+      ? onSearchMovies(values.search, )
+      : setErrorMessage(error);
   }
 
-  function handleCheckbox() {
-    setSwitchChecked(!switchChecked);
+  function handleSearchUserMovies(e) {
+    e.preventDefault();
+    isValid
+    ? onSearchUserMovies(values.search)
+    : setErrorMessage(error);
   }
+
+  useEffect(() => {
+    setErrorMessage("");
+  }, [isValid]);
 
   return (
     <section className="search-form">
-      <form className="search-form__form" onSubmit={handleSearch}>
+      <form
+        className="search-form__form"
+        onSubmit={isSavedFilms ? handleSearchUserMovies : handleSearchMovies}
+      >
         <fieldset className="search-form__field">
           <input
             className="search-form__input"
@@ -23,14 +47,25 @@ function SearchForm({ inProgress }) {
             name="search"
             type="text"
             placeholder="Фильм"
+            autoComplete="off"
+            pattern="[а-яА-Яa-zA-ZёË\- ]{1,}"
+            onChange={handleChange}
+            value={values.search || ""}
             required
-            disabled={inProgress}
-            // value={Фильм || ''}
           />
-          <button className="search-form__button" type="submit"></button>
+          <button
+            className="search-form__button"
+            type="submit"
+            disabled={!isValid}
+          ></button>
+          <span className="search-form__error">
+            {error.search || errorMessage}
+          </span>
         </fieldset>
-
-        <Checkbox onChange={handleCheckbox} isChecked={switchChecked} />
+        <Checkbox
+          handleShortMoviesChecked={handleShortMoviesChecked}
+          isShortMoviesChecked={isShortMoviesChecked}
+        />
         <div className="search-form__line"></div>
       </form>
     </section>

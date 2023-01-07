@@ -2,4 +2,4 @@ module.exports.BASE_URL = process.env.NODE_ENV === 'development' ? 'http://local
 
 module.exports.SOURCE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
-// PATTERN="/[a-zа-яё-\s]+/gi"
+module.exports.SHORTMOVIE_DURATION = 40;

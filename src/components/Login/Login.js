@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormValidation";
 
@@ -6,14 +7,19 @@ import "../App/App.css";
 import "../Navigation/Navigation.css";
 import Preloader from "../Preloader/Preloader";
 
+
 function Login({ onLogin, inProgress, errorMessage, clearErrorMessages }) {
-  const { values, handleChange, error, isValid } = useFormWithValidation();
+  const { values, handleChange, error, isValid, resetForm } = useFormWithValidation();
 
   function handleLogin(e) {
     e.preventDefault();
     onLogin(values.email, values.password);
     clearErrorMessages();
   }
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   return (
     <>
@@ -35,7 +41,6 @@ function Login({ onLogin, inProgress, errorMessage, clearErrorMessages }) {
               onChange={handleChange}
               value={values.email || ""}
             ></input>
-            {/* <div className="login__line"></div> */}
             <p className="login__label">Пароль</p>
             <input
               className="login__input"
@@ -48,7 +53,6 @@ function Login({ onLogin, inProgress, errorMessage, clearErrorMessages }) {
               onChange={handleChange}
               value={values.password || ""}
             ></input>
-            {/* <div className="login__line"></div> */}
             <p className="login__error login__error_place_last">
               {error.email || error.password || errorMessage}
             </p>

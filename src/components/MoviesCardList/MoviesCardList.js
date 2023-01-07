@@ -1,44 +1,115 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
+import useScreenWith from "../../hooks/useScreenWidth";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
 import "./MoviesCardList.css";
 
-function MoviesCardList({ savedFilms, inProgress }) {
-  const [movies, setMovies] = useState([]);
+function MoviesCardList({
+  isSavedFilms,
+  movies,
+  isNotFoundResult,
+  isSearchError,
+  handleSaveMovie,
+  handleDeleteUserMovie,
+}) {
+  const windowSize = useScreenWith();
+  const [moviesShow, setMoviesShow] = useState([]);
+  const [inicialCardsNumber, setInicialCardsNumber] = useState({
+    all: 12,
+    add: 3,
+  });
+  const location = useLocation();
 
+  // количество карточек в зависимости от ширины экране
   useEffect(() => {
-    // if (loggedIn) {
-      setMovies(JSON.parse(localStorage.getItem("userMovies")))
-      console.log("movies = " + movies);
-    // }
-  }, []);
+    if (location.pathname === "/movies") {
+      if (windowSize > 1280) {
+        setInicialCardsNumber({ all: 12, add: 3 });
+      } else if (windowSize > 768 && windowSize <= 1280) {
+        setInicialCardsNumber({ all: 8, add: 2 });
+      } else {
+        setInicialCardsNumber({ all: 5, add: 2 });
+      }
+    }
+  }, [windowSize, location.pathname]);
 
-  // const movies = localStorage.getItem("beat-movies");
-  // console.log({ movies });
-  function handleMoreMovies() {}
+  // отображаемый массив фильмов
+  useEffect(() => {
+    if (movies.length) {
+      const cards = movies.filter((item, i) => i < inicialCardsNumber.all);
+      setMoviesShow(cards);
+    }
+  }, [movies, inicialCardsNumber.all]);
+
+  function handleMoreMovies() {
+    const start = moviesShow.length;
+    const more = movies.length - start;
+    const end = start + inicialCardsNumber.add;
+    if (more > 0) {
+      const addCards = movies.slice(start, end);
+      setMoviesShow([...moviesShow, ...addCards]);
+    }
+  }
 
   return (
     <>
-    <Preloader inProgress={inProgress} />
-      <div
+      <ul
         className={`movies-card-list__wrap  ${
-          savedFilms
+          isSavedFilms
             ? "movies-card-list__wrap_type_saved-movies"
             : "movies-card-list__wrap_type_movies"
         }`}
       >
-        {movies.map((movie) => {
-          return <MoviesCard movie={movie} savedFilms={savedFilms} />;
+        <span
+          className={`movies__error ${
+            isSearchError ? "" : "movies-card-list__hide"
+          }`}
+        >
+          Во время запроса произошла ошибка. Возможно, проблема с соединением
+          или сервер недоступен. Подождите немного и попробуйте ещё раз
+        </span>
+        <span
+          className={`movies__not-found ${
+            isNotFoundResult ? "" : "movies-card-list__hide"
+          }`}
+        >
+          Ничего не найдено
+        </span>
+        {
+          (location.pathname === "/saved-movies" && (
+            <span
+              className={`movies__no-saved ${
+                movies.length === 0
+                  ? ""
+                  : "movies-card-list__hide"
+              }`}
+            >
+              Вы пока что ничего не добавили в избранное
+            </span>
+          ))
+        }
+        {moviesShow.map((movie) => {
+          return (
+            <MoviesCard
+              key={movie.id || movie.movieId}
+              movie={movie}
+              handleSaveMovie={handleSaveMovie}
+              handleDeleteUserMovie={handleDeleteUserMovie}
+            />
+          );
         })}
-      </div>
-      <button
-        className={`movies-card-list__more-button ${
-          savedFilms ? "movies-card-list__hide" : ""
-        }`}
-        onClick={handleMoreMovies}
-      >
-        Ещё
-      </button>
+      </ul>
+      {location.pathname === "/movies" &&
+        moviesShow.length < movies.length &&
+        moviesShow.length >= 5 && (
+          <button
+            className={"movies-card-list__more-button"}
+            onClick={handleMoreMovies}
+          >
+            Ещё
+          </button>
+        )}
     </>
   );
 }

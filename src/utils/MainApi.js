@@ -20,7 +20,7 @@ export const register = (name, email, password) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password,name }),
+    body: JSON.stringify({ email, password, name }),
   }).then(checkResOk);
 };
 
@@ -31,7 +31,7 @@ export const authorize = (email, password) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password}),
+    body: JSON.stringify({ email, password }),
   }).then(checkResOk);
 };
 
@@ -54,7 +54,6 @@ export const setUserInfo = (email, name, token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    // credentials: "include",
     body: JSON.stringify({
       email: email,
       name: name,
@@ -70,58 +69,40 @@ export const getMovies = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    // credentials: "include",
   }).then(checkResOk);
 };
 
 //  Добавление карточки пользователя
-export const createUserMovie = (
-  country,
-  director,
-  duration,
-  year,
-  description,
-  image,
-  trailerLink,
-  thumbnail,
-  movieId,
-  nameRU,
-  nameEN,
-  token
-) => {
+export const saveUserMovie = (movie, token) => {
   return fetch(`${BASE_URL}/movies`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    credentials: "include",
     body: JSON.stringify({
-      country: country,
-      director: director,
-      duration: duration,
-      year: year,
-      description: description,
-      image: image,
-      trailerLink: trailerLink,
-      thumbnail: thumbnail,
-      movieId: movieId,
-      nameRU: nameRU,
-      nameEN: nameEN,
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: movie.image,
+      trailerLink: movie.trailerLink,
+      thumbnail: movie.thumbnail,
+      movieId: movie.movieId,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
     }),
   }).then(checkResOk);
 };
 
 // Удаление карточки пользователя
-export const deleteUserMovie = (idCard, token) => {
-  return fetch(`${BASE_URL}/movies/${idCard}`, {
+export const deleteUserMovie = (id, token) => {
+  return fetch(`${BASE_URL}/movies/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    credentials: "include",
   }).then(checkResOk);
 };
-
-

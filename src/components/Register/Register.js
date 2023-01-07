@@ -36,7 +36,6 @@ function Register({onRegister, inProgress, errorMessage, clearErrorMessages}) {
           onChange={handleChange}
           value={values.name || ''}
         ></input>
-        {/* <div className="login__line"></div> */}
         <p className="login__label">E-mail</p>
         <input
           className="login__input"
@@ -49,7 +48,6 @@ function Register({onRegister, inProgress, errorMessage, clearErrorMessages}) {
           onChange={handleChange}
           value={values.email || ''}
         ></input>
-        {/* <div className="login__line"></div> */}
         <p className="login__label">Пароль</p>
         <input
           className="login__input"

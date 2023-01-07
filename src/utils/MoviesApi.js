@@ -19,7 +19,6 @@ class Api {
     return fetch(`${this._SOURCE_URL}`, {
       method: "GET",
       headers: this._headers,
-      // credentials: 'include',
     }).then(this._checkResOk);
   }
 }
