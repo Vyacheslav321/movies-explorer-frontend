@@ -19,6 +19,8 @@ function Profile({
   inProgress,
 }) {
   const [editProfile, setEditProfile] = useState(false);
+  const [currentUserError, setCurrentUserError] = useState("");
+  const [additionalVerification, setAdditionalVerification] = useState(false);
   const { values, setValues, handleChange, error, isValid } =
     useFormWithValidation();
   const currentUser = useContext(CurrentUserContext);
@@ -29,6 +31,20 @@ function Profile({
     onEdit(values.name, values.email);
     clearErrorMessages();
   }
+
+  useEffect(() => {
+    if (
+      !isValid ||
+      currentUser.name === values.name ||
+      currentUser.email === values.email
+    ) {
+      setAdditionalVerification(true);
+      setCurrentUserError("Введите новые данные пользователя");
+    } else {
+      setAdditionalVerification(false);
+      setCurrentUserError("");
+    }
+  }, [isValid, currentUser.name, currentUser.email, values.name, values.email]);
 
   useEffect(() => {
     setValues(currentUser);
@@ -96,15 +112,15 @@ function Profile({
             <p
               className={`profile__error ${editProfile ? "" : "profile__hide"}`}
             >
-              {error.name || error.email || errorMessage}
+              {error.name || error.email || errorMessage || currentUserError}
             </p>
             {editProfile ? (
               <button
                 className={`profile__button ${
-                  isValid ? "" : "profile__button_disabled"
+                  additionalVerification ? "profile__button_disabled" : ""
                 }`}
                 type="submit"
-                disabled={!isValid}
+                disabled={additionalVerification}
               >
                 Сохранить
               </button>
