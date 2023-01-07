@@ -14,9 +14,8 @@ function SavedMovies({
   handleDeleteUserMovie,
   inProgress,
   handleShortUserMoviesChecked,
-  isShortUserMoviesChecked
+  isShortUserMoviesChecked,
 }) {
-
   return (
     <>
       <Preloader inProgress={inProgress} />
@@ -35,9 +34,7 @@ function SavedMovies({
             handleDeleteUserMovie={handleDeleteUserMovie}
           />
         )}
-        {isNotFoundResult && (
-          <p className="movies__error">Ничего не найдено</p>
-        )}
+        {isNotFoundResult && <p className="movies__error">Ничего не найдено</p>}
       </main>
       <Footer />
     </>

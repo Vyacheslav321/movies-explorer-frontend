@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Redirect,
-  Route,
-  Switch,
-  useHistory,
-} from "react-router-dom";
+import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../../context/currentUserContext";
 import {
   register,
@@ -184,7 +179,8 @@ function App() {
     setIsNotFoundResult(false);
     setIsSearchError(false);
     if (allMovies.length === 0) {
-      moviesApi.getMovies()
+      moviesApi
+        .getMovies()
         .then((movies) => {
           setAllMovies(movies);
           const searchResult = filterMovies(
@@ -246,7 +242,10 @@ function App() {
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
     saveUserMovie(movie, token)
       .then((data) => {
-        localStorage.setItem("userMovies", JSON.stringify([...userMovies, data]));
+        localStorage.setItem(
+          "userMovies",
+          JSON.stringify([...userMovies, data])
+        );
       })
       .catch((err) => {
         console.log(err.message);
@@ -266,7 +265,13 @@ function App() {
         const newFoundUserMovies = foundUserMovies.filter((movie) => {
           return movie._id !== movieId;
         });
-        localStorage.setItem("foundUserMovies", JSON.stringify(newFoundUserMovies));
+        if (newFoundUserMovies.length === 0) {
+          setIsNotFoundResult(true);
+        }
+        localStorage.setItem(
+          "foundUserMovies",
+          JSON.stringify(newFoundUserMovies)
+        );
         setFoundUserMovies(newFoundUserMovies);
       })
       .catch((err) => {
@@ -311,8 +316,6 @@ function App() {
         });
     }
   }, [loggedIn]);
-
-
 
   // useEffect(() => {
   //   const token = localStorage.getItem("jwt");

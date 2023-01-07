@@ -69,27 +69,7 @@ function MoviesCardList({
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз
         </span>
-        <span
-          className={`movies__not-found ${
-            isNotFoundResult ? "" : "movies-card-list__hide"
-          }`}
-        >
-          Ничего не найдено
-        </span>
-        {
-          (location.pathname === "/saved-movies" && (
-            <span
-              className={`movies__no-saved ${
-                movies.length === 0
-                  ? ""
-                  : "movies-card-list__hide"
-              }`}
-            >
-              Вы пока что ничего не добавили в избранное
-            </span>
-          ))
-        }
-        {moviesShow.map((movie) => {
+         {moviesShow.map((movie) => {
           return (
             <MoviesCard
               key={movie.id || movie.movieId}
