@@ -8,7 +8,6 @@ import "./MoviesCardList.css";
 function MoviesCardList({
   isSavedFilms,
   movies,
-  isNotFoundResult,
   isSearchError,
   handleSaveMovie,
   handleDeleteUserMovie,

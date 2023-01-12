@@ -32,7 +32,7 @@ function Movies({
           <MoviesCardList
             isSavedFilms={false}
             movies={movies}
-            isNotFoundResult={isNotFoundResult}
+            // isNotFoundResult={isNotFoundResult}
             isSearchError={isSearchError}
             handleSaveMovie={handleSaveMovie}
             handleDeleteUserMovie={handleDeleteUserMovie}

@@ -1,0 +1,117 @@
+.tooltip {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 99vw;
+  height: 100vh;
+  border: 5px solid var(--color-gray);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: visibility 1s, opacity 1s linear;
+  visibility: hidden;
+}
+
+.tooltip_open {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 1s linear;
+}
+
+.tooltip__container {
+  position: relative;
+  width: 200px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--color-background-tooltip);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.tooltip__close-button {
+  height: 32px;
+  width: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  right: -38px;
+  top: -44px;
+}
+
+.tooltip__close-button:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  border: 2px solid var(--color-background-tooltip);
+  background: var(--color-background-tooltip);
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.tooltip__close-button:after {
+  position: absolute;
+  content: "";
+  height: 26px;
+  border: 2px solid var(--color-background-tooltip);
+  background: var(--color-background-tooltip);
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.tooltip__close-button:hover {
+  opacity: 0.6;
+}
+
+.tooltip__info-icon {
+  margin: 20px auto 40px;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.tooltip__info-text {
+  margin: 0 auto 60px;
+  padding: 0;
+  max-width: 358px;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: var(--color-black);
+}
+
+@media screen and (min-width: 768px) {
+  .tooltip__container {
+    width: 330px;
+    height: 200px;
+  }
+  .tooltip__info-icon {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tooltip__container {
+    width: 450px;
+    height: 220px;
+  }
+  .tooltip__info-icon {
+    margin: 0 auto 40px;
+    width: 100px;
+    height: 100px;
+  }
+}

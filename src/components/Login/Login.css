@@ -82,9 +82,9 @@
 
 .login__error {
   margin: 6px 0;
-  padding: 0 0 249px;
+  padding: 0 0 153px;
   max-width: fit-content;
-  min-height: 24px;
+  min-height: 120px;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -128,8 +128,8 @@
 }
 
 .login__button_disabled {
-  background: #F8F8F8;
-  color: #000;
+  background: var(--color-background-tooltip);
+  color: var(--color-black)
 }
 
 .login__footer {

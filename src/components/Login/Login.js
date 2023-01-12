@@ -54,7 +54,7 @@ function Login({ onLogin, inProgress, errorMessage, clearErrorMessages }) {
               value={values.password || ""}
             ></input>
             <p className="login__error login__error_place_last">
-              {error.email || error.password || errorMessage}
+              {`${error.email} \n ${error.password} \n ${errorMessage}`}
             </p>
             <div className="login__button-container">
               <button

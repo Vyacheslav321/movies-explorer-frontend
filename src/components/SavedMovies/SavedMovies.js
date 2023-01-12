@@ -3,15 +3,16 @@ import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
+
 import "./SavedMovies.css";
 import "../Movies/Movies.css";
 
 function SavedMovies({
   loggedIn,
   movies,
+  handleDeleteUserMovie,
   onSearchUserMovies,
   isNotFoundResult,
-  handleDeleteUserMovie,
   inProgress,
   handleShortUserMoviesChecked,
   isShortUserMoviesChecked,

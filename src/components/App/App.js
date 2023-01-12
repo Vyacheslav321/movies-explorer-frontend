@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { CurrentUserContext } from "../../context/currentUserContext";
 import {
   register,
@@ -19,13 +25,19 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
+import Tooltip from "../Tooltip/Tooltip";
 import "./App.css";
 import { filterMovies } from "../../utils/Utils";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [inProgress, setInProgress] = useState(false);
-  const [token, setToken] = useState("");
+  const [tooltip, setTooltip] = useState({
+    isPopupOpen: false,
+    message: "",
+    successful: true,
+  });
+
   const [currentUser, setCurrentUser] = useState({
     userId: "",
     name: "",
@@ -45,8 +57,10 @@ function App() {
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
   const [editProfileErrorMessage, setEditProfileErrorMessage] = useState("");
   const [isSearchError, setIsSearchError] = useState(false);
+  const [message, setMessage] = useState("");
 
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     if (localStorage.getItem("shortMoviesChecked") === "true") {
@@ -54,15 +68,17 @@ function App() {
     } else {
       setIsShortMoviesChecked(false);
     }
-  }, []);
-
-  useEffect(() => {
     if (localStorage.getItem("shortUserMoviesChecked") === "true") {
       setIsShortUserMoviesChecked(true);
     } else {
       setIsShortUserMoviesChecked(false);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("shortMoviesChecked", isShortMoviesChecked);
+    localStorage.setItem("shortUserMoviesChecked", isShortUserMoviesChecked);
+  }, [isShortMoviesChecked, isShortUserMoviesChecked]);
 
   function handleLogin(email, password) {
     setInProgress(true);
@@ -72,7 +88,7 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setLoginErrorMessage("");
           setLoggedIn(true);
-          setToken(res.token);
+          // setToken(res.token);
           history.replace({ pathname: "/movies" });
         } else {
           setLoginErrorMessage(res.message);
@@ -115,20 +131,18 @@ function App() {
 
   // выход
   function handleSignOut() {
-    setToken("");
     setLoggedIn(false);
-    localStorage.removeItem("jwt");
-    localStorage.removeItem("foundMovies");
-    localStorage.removeItem("foundUserMovies");
-    localStorage.removeItem("userMovies");
+    setCurrentUser({});
+    localStorage.clear();
     setFoundMovies([]);
     setAllMovies([]);
     history.push("/");
   }
 
   function handleEditProfile(name, email) {
-    setInProgress(true);
+    const token = localStorage.getItem("jwt");
     if (token) {
+      setInProgress(true);
       setUserInfo(email, name, token)
         .then((userInfo) => {
           if (userInfo.name) {
@@ -165,14 +179,6 @@ function App() {
   function handleShortUserMoviesChecked(e) {
     setIsShortUserMoviesChecked(e.target.checked);
   }
-
-  useEffect(() => {
-    localStorage.setItem("shortMoviesChecked", isShortMoviesChecked);
-  }, [isShortMoviesChecked]);
-
-  useEffect(() => {
-    localStorage.setItem("shortUserMoviesChecked", isShortUserMoviesChecked);
-  }, [isShortUserMoviesChecked]);
 
   function handleSearchMovies(searchKeyword) {
     setInProgress(true);
@@ -239,6 +245,7 @@ function App() {
   }
 
   function handleSaveMovie(movie) {
+    const token = localStorage.getItem("jwt");
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
     saveUserMovie(movie, token)
       .then((data) => {
@@ -252,8 +259,17 @@ function App() {
       });
   }
 
+  // Удаление карточек фильмов
+  function handlePopupClose() {
+    setTooltip({
+      ...Tooltip,
+      isPopupOpen: false,
+    });
+  }
+
   // обработчик удаления фильма пользователя
   function handleDeleteUserMovie(movieId) {
+    const token = localStorage.getItem("jwt");
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
     const foundUserMovies = JSON.parse(localStorage.getItem("foundUserMovies"));
     deleteUserMovie(movieId, token)
@@ -275,63 +291,61 @@ function App() {
         setFoundUserMovies(newFoundUserMovies);
       })
       .catch((err) => {
+        setMessage(err.message);
         console.log(err);
       });
   }
 
   // проверка токена
   useEffect(() => {
+    const path = location.pathname;
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
+      setInProgress(true);
       getUserInfo(jwt)
         .then((data) => {
           setCurrentUser(data);
           setLoggedIn(true);
-          setToken(localStorage.getItem("jwt"));
-          history.push("/movies");
+          history.push(path);
         })
         .catch((err) => {
           console.log(err.message);
           if (err.code === 401) {
-            history.push("/");
+            setLoggedIn(false);
           }
-        });
-    }
-  }, [history]);
-
-  // загрузка данных пользователя
-  useEffect(() => {
-    if (loggedIn) {
-      setInProgress(true);
-      const token = localStorage.getItem("jwt");
-      getMovies(token)
-        .then((moviesData) => {
-          localStorage.setItem("userMovies", JSON.stringify(moviesData));
-        })
-        .catch((err) => {
-          console.log(`Ошибка загрузки данных ${err.message}`);
         })
         .finally(() => {
           setInProgress(false);
         });
     }
+  }, [history, location.pathname]);
+
+  // загрузка данных пользователя после логина
+  useEffect(() => {
+    if (loggedIn) {
+      setInProgress(true);
+      const token = localStorage.getItem("jwt");
+      if (token) {
+        Promise.all([getMovies(token), getUserInfo(token)])
+          .then(([moviesData, userData]) => {
+            setCurrentUser(userData);
+            localStorage.setItem("userMovies", JSON.stringify(moviesData));
+          })
+          .catch((err) => {
+            console.log(`Ошибка загрузки данных ${err.message}`);
+          })
+          .finally(() => {
+            setInProgress(false);
+          });
+      } else {
+        setLoggedIn(false);
+      }
+    }
   }, [loggedIn]);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("jwt");
-  //   getMovies(token)
-  //     .then((moviesData) => {
-  //       localStorage.setItem("userMovies", JSON.stringify(moviesData));
-  //       // setUserMovies(moviesData);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`Ошибка загрузки данных: ${err.message}`);
-  //     });
-  // }, [location]);
-
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
+    <div className="page">
+      <CurrentUserContext.Provider value={currentUser}>
         <Switch>
           <Route exact path="/">
             <Main loggedIn={loggedIn} />
@@ -374,10 +388,11 @@ function App() {
             movies={foundUserMovies} // результаты поиска
             onSearchUserMovies={handleSearchUserMovies} // обработчик поиска
             isNotFoundResult={isNotFoundResult} // ничего не нашлось
-            handleDeleteUserMovie={handleDeleteUserMovie}
             inProgress={inProgress} // сделать?
             handleShortUserMoviesChecked={handleShortUserMoviesChecked}
             isShortUserMoviesChecked={isShortUserMoviesChecked}
+            // isPopupOpen={isPopupOpen}
+            handleDeleteUserMovie={handleDeleteUserMovie}
           />
           <Route exact path="/signup">
             {loggedIn ? (
@@ -407,8 +422,9 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
-      </div>
-    </CurrentUserContext.Provider>
+        <Tooltip tooltip={tooltip} onClosePopup={handlePopupClose} />
+      </CurrentUserContext.Provider>
+    </div>
   );
 }
 

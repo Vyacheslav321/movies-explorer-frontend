@@ -48,7 +48,7 @@
   align-content: center;
   align-items: center;
   position: relative;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .profile__container {
@@ -163,7 +163,7 @@
 }
 
 .profile__button_disabled {
-  background: #f8f8f8;
+  background: var(--color-background-tooltip);
   color: #000;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .profile__button_disabled {
-  background: #f8f8f8;
+  background: var(--color-background-tooltip);
   color: #000;
 }
 

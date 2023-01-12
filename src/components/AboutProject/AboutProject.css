@@ -14,7 +14,7 @@
 .about-project__card {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: flex-start;
   text-align: start;
   margin: 0;
@@ -139,7 +139,7 @@
     display: flex;
     flex: 1;
     row-gap: 22px;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
     text-align: start;
     margin: 0;

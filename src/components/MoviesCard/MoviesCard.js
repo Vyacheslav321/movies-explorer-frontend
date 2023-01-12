@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+// import { useConfirmDelete } from "../../hooks/useConfirm";
 import { getImage } from "../../utils/Utils";
 
 import "../App/App.css";
@@ -62,10 +63,12 @@ function MoviesCard({
     handleSaveMovie(movieCard);
     setIsUserMovie(true);
   }
+// const handleDeleteMovie = useConfirmDelete('Вы уверены?', handleDeleteMovie1())
   function handleDeleteMovie() {
     handleDeleteUserMovie(userMovieCard._id);
     setIsUserMovie(false);
   }
+
   useEffect(() => {
     if (userMovieCard === undefined) {
       setIsUserMovie(false);
@@ -90,7 +93,7 @@ function MoviesCard({
           className="movies-card__image"
           src={getImage(movie)}
           alt={movieCard.nameRU}
-          title={`Описание: ${movie.description} \n\nСнято: ${movie.country} ${movie.year}г.`}
+          title={`Описание: ${movie.description || ''} \n\nСнято: ${movie.country || ''} ${movie.year || ''}г.`}
         />
       </Link>
 
