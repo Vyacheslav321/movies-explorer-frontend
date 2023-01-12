@@ -11,7 +11,7 @@ export default function useScreenWith() {
       setScreenWidth(getScreenWidth());
     }
 
-    function widthСchangeСontroller() {
+    function widthСhangeСontroller() {
       if (!timer) {
         timer = setTimeout(() => {
           timer = null;
@@ -19,7 +19,7 @@ export default function useScreenWith() {
         }, 1500);
       }
     }
-    window.addEventListener("resize", widthСchangeСontroller, false);
+    window.addEventListener("resize", widthСhangeСontroller, false);
     return () => window.removeEventListener("resize", handleScreenResize);
   }, [getScreenWidth]);
 
