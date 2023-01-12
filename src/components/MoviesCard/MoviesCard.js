@@ -93,7 +93,7 @@ function MoviesCard({
           className="movies-card__image"
           src={getImage(movie)}
           alt={movieCard.nameRU}
-          title={`Описание: ${movie.description || ''} \n\nСнято: ${movie.country || ''} ${movie.year || ''}г.`}
+          title={`Описание: ${movie.description || ''} \nСнято: ${movie.country || ''} ${movie.year || ''}г.`}
         />
       </Link>
 

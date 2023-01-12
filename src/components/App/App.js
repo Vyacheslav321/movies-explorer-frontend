@@ -18,6 +18,7 @@ import {
 } from "../../utils/MainApi";
 import moviesApi from "../../utils/MoviesApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Preloader from "../Preloader/Preloader";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
@@ -57,7 +58,6 @@ function App() {
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
   const [editProfileErrorMessage, setEditProfileErrorMessage] = useState("");
   const [isSearchError, setIsSearchError] = useState(false);
-  const [message, setMessage] = useState("");
 
   const history = useHistory();
   const location = useLocation();
@@ -114,7 +114,11 @@ function App() {
           setRegisterErrorMessage("");
           handleLogin(email, password);
         } else if (res.message) {
-          setRegisterErrorMessage(res.message);
+          setTooltip({
+            isPopupOpen: true,
+            message: res.message,
+            successful: false,
+          });
         }
       })
       .catch((err) => {
@@ -255,15 +259,22 @@ function App() {
         );
       })
       .catch((err) => {
-        console.log(err.message);
+        setTooltip({
+          isPopupOpen: true,
+          message: err.message,
+          successful: false,
+        });
       });
   }
 
   // Удаление карточек фильмов
   function handlePopupClose() {
     setTooltip({
-      ...Tooltip,
       isPopupOpen: false,
+      message: '',
+      successful: false,
+      // ...Tooltip,
+      // isPopupOpen: false,
     });
   }
 
@@ -291,8 +302,11 @@ function App() {
         setFoundUserMovies(newFoundUserMovies);
       })
       .catch((err) => {
-        setMessage(err.message);
-        console.log(err);
+        setTooltip({
+          isPopupOpen: true,
+          message: err.message,
+          successful: false,
+        });
       });
   }
 
@@ -309,7 +323,6 @@ function App() {
           history.push(path);
         })
         .catch((err) => {
-          console.log(err.message);
           if (err.code === 401) {
             setLoggedIn(false);
           }
@@ -332,7 +345,11 @@ function App() {
             localStorage.setItem("userMovies", JSON.stringify(moviesData));
           })
           .catch((err) => {
-            console.log(`Ошибка загрузки данных ${err.message}`);
+            setTooltip({
+              isPopupOpen: true,
+              message: err.message,
+              successful: false,
+            });
           })
           .finally(() => {
             setInProgress(false);
@@ -346,6 +363,7 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
+        <Preloader inProgress={inProgress} />
         <Switch>
           <Route exact path="/">
             <Main loggedIn={loggedIn} />

@@ -12,6 +12,14 @@
   padding: 0;
 }
 
+.movies-card__link:visited {
+  .movies-card__link {
+    margin: 0;
+    padding: 0;
+    color: var(--color-gray);
+  }
+}
+
 .movies-card__image {
   margin: 0;
   padding: 0;
@@ -20,6 +28,7 @@
   max-height: 168px;
   min-height: 168px;
   border-radius: 6px;
+  color: var(--color-gray);
 }
 
 .movie-card__button {

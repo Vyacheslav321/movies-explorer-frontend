@@ -5,7 +5,6 @@ import { CurrentUserContext } from "../../context/currentUserContext";
 import { useFormWithValidation } from "../../hooks/useFormValidation";
 
 import Header from "../Header/Header";
-import Preloader from "../Preloader/Preloader";
 import "../App/App.css";
 import "./Profile.css";
 
@@ -71,7 +70,6 @@ function Profile({
 
   return (
     <div className="profile">
-      <Preloader inProgress={inProgress} />
       <Header loggedIn={loggedIn} main={false} />
       <main className="profile__main">
         <h2 className="profile__header">Привет, {currentUser.name}!</h2>

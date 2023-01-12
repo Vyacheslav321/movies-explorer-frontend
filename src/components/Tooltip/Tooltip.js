@@ -38,7 +38,7 @@ function Tooltip({
           src={successful ? good : bad}
           alt={successful ? "Успех" : "Ошибка"}
         />
-        <h2 className="tooltip__text">{message}</h2>
+        <h2 className="tooltip__text">{`${message}`}</h2>
       </div>
     </div>
   );

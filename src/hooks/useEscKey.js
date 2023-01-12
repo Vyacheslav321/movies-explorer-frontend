@@ -15,5 +15,5 @@ export default function useEscKey(callback, dependency) {
         document.removeEventListener("keyup", onPressEsc);
       };
     }
-  }, [dependency]);
+  }, [dependency, callback]);
 }
