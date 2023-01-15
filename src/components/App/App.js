@@ -27,6 +27,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 import Tooltip from "../Tooltip/Tooltip";
 import "./App.css";
+import { getUserMovieCard } from "../../utils/Utils";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -175,11 +176,8 @@ function App() {
   function handleSaveMovie(movie) {
     const token = localStorage.getItem("jwt");
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
-    userMovies.find((item) => {
-      if(item.movieId === movie.id){
-        return 
-      }
-    }) 
+    const save = getUserMovieCard(userMovies, movie)
+    if (save === undefined) { 
     saveUserMovie(movie, token)
       .then((data) => {
         localStorage.setItem(
@@ -196,7 +194,7 @@ function App() {
         });
       })
       .finally(() => handlePreloader(false));
-    
+    }
   }
 
   // обработчик удаления фильма пользователя
@@ -315,6 +313,7 @@ function App() {
             path="/movies"
             component={Movies}
             loggedIn={loggedIn}
+            isUpdated={isUpdated}
             handleTooltip={handleTooltip}
             handlePreloader={handlePreloader}
             handleSaveMovie={handleSaveMovie}

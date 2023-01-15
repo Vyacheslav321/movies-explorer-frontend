@@ -10,6 +10,7 @@ import { filterMovies } from "../../utils/Utils";
 
 function Movies({
   loggedIn,
+  isUpdated,
   handleTooltip,
   handlePreloader,
   handleSaveMovie,
@@ -99,6 +100,7 @@ function Movies({
           <MoviesCardList
             isSavedFilms={false}
             movies={foundMovies}
+            isUpdated={isUpdated}
             isSearchError={isSearchError}
             handleSaveMovie={handleSaveMovie}
             handleDeleteUserMovie={handleDeleteUserMovie}

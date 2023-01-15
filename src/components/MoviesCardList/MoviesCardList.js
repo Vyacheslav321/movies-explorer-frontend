@@ -9,6 +9,7 @@ import "./MoviesCardList.css";
 function MoviesCardList({
   isSavedFilms,
   movies,
+  isUpdated,
   isSearchError,
   handleSaveMovie,
   handleDeleteUserMovie,
@@ -57,7 +58,7 @@ function MoviesCardList({
 
 useEffect(() => {
   setUserMovies(JSON.parse(localStorage.getItem("userMovies")));
-}, [])
+}, [isUpdated])
 
   return (
     <>
