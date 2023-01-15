@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-// import { useConfirmDelete } from "../../hooks/useConfirm";
-import { getImage } from "../../utils/Utils";
+import { getImage, getUserMovieCard } from "../../utils/Utils";
 
 import "../App/App.css";
 import "./MoviesCard.css";
 
 function MoviesCard({
   movie,
+  isUserFilm,
   handleSaveMovie,
   handleDeleteUserMovie,
 }) {
@@ -40,16 +40,8 @@ function MoviesCard({
   }м`;
   const userMovies = JSON.parse(localStorage.getItem("userMovies"));
   const userMovieCard = getUserMovieCard(userMovies, movie);
-  const location = useLocation();
 
-  function getUserMovieCard(userMovies, movie) {
-    return userMovies.find((item) => {
-      return (
-        Number(item.movieId) === Number(movie.movieId) ||
-        Number(item.movieId) === Number(movie.id)
-      );
-    });
-  }
+  const location = useLocation();
 
   function handleCardMouseOver() {
     setIsButtonActive(true);
@@ -63,19 +55,19 @@ function MoviesCard({
     handleSaveMovie(movieCard);
     setIsUserMovie(true);
   }
-// const handleDeleteMovie = useConfirmDelete('Вы уверены?', handleDeleteMovie1())
+
   function handleDeleteMovie() {
-    handleDeleteUserMovie(userMovieCard._id);
+    handleDeleteUserMovie(userMovieCard);
     setIsUserMovie(false);
   }
 
   useEffect(() => {
-    if (userMovieCard === undefined) {
+    if (isUserFilm === undefined) {
       setIsUserMovie(false);
     } else {
       setIsUserMovie(true);
     }
-  }, [userMovieCard, location]);
+  }, [isUserFilm]);
 
   return (
     <li
@@ -93,7 +85,9 @@ function MoviesCard({
           className="movies-card__image"
           src={getImage(movie)}
           alt={movieCard.nameRU}
-          title={`Описание: ${movie.description || ''} \nСнято: ${movie.country || ''} ${movie.year || ''}г.`}
+          title={`Описание: ${movie.description || ""} \nСнято: ${
+            movie.country || ""
+          } ${movie.year || ""}г.`}
         />
       </Link>
 

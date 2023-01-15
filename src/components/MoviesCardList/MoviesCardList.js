@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import useScreenWith from "../../hooks/useScreenWidth";
+import { getUserMovieCard } from "../../utils/Utils";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
 
@@ -18,6 +19,9 @@ function MoviesCardList({
     all: 12,
     add: 3,
   });
+
+  const [userMovies, setUserMovies] = useState(JSON.parse(localStorage.getItem("userMovies")));
+
   const location = useLocation();
 
   // количество карточек в зависимости от ширины экране
@@ -51,6 +55,10 @@ function MoviesCardList({
     }
   }
 
+useEffect(() => {
+  setUserMovies(JSON.parse(localStorage.getItem("userMovies")));
+}, [])
+
   return (
     <>
       <ul
@@ -68,11 +76,12 @@ function MoviesCardList({
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз
         </span>
-         {moviesShow.map((movie) => {
+        {moviesShow.map((movie) => {
           return (
             <MoviesCard
               key={movie.id || movie.movieId}
               movie={movie}
+              isUserFilm={getUserMovieCard(userMovies, movie)}
               handleSaveMovie={handleSaveMovie}
               handleDeleteUserMovie={handleDeleteUserMovie}
             />

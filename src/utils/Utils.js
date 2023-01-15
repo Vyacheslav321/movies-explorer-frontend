@@ -1,16 +1,5 @@
 import { SHORTMOVIE_DURATION } from "./Constants";
 
-// обработчик поиска
-// function handleSearch(movies, searchKeyword) {
-//   let searchResult = [];
-//   movies.forEach((movie) => {
-//     if (movie.nameRU.indexOf(searchKeyword) !== -1) {
-//       return searchResult.push(movie);
-//     }
-//   });
-//   return searchResult;
-// }
-
 function handleSearch(movies, searchKeyword) {
   let searchResult = [];
   const searchKeywordNormalize = searchKeyword.toLowerCase().trim();
@@ -34,7 +23,6 @@ function handleFilterShortMovies(movies) {
 function filterMovies(movies, searchKeyword, shortMoviesChecked) {
   const searchResult = handleSearch(movies, searchKeyword);
   if (shortMoviesChecked) {
-    console.log(shortMoviesChecked);
     return handleFilterShortMovies(searchResult);
   } else {
     return searchResult;
@@ -50,4 +38,13 @@ function getImage(movie) {
   }
 }
 
-export { filterMovies, getImage };
+function getUserMovieCard(userMovies, movie) {
+  return userMovies.find((item) => {
+    return (
+      Number(item.movieId) === Number(movie.movieId) ||
+      Number(item.movieId) === Number(movie.id)
+    );
+  });
+}
+
+export { filterMovies, getImage, getUserMovieCard };

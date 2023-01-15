@@ -11,28 +11,29 @@ function SearchForm({
   handleShortMoviesChecked,
   isShortMoviesChecked,
 }) {
-
-  const { values, handleChange, error, isValid } =
-    useFormWithValidation();
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const { values, handleChange, error, isValid } = useFormWithValidation();
   const [errorMessage, setErrorMessage] = useState("");
 
   function handleSearchMovies(e) {
     e.preventDefault();
-    isValid
-      ? onSearchMovies(values.search, )
-      : setErrorMessage(error);
+    localStorage.setItem("searchKeyword", values.search);
+    isValid ? onSearchMovies() : setErrorMessage(error);
   }
 
   function handleSearchUserMovies(e) {
     e.preventDefault();
-    isValid
-    ? onSearchUserMovies(values.search)
-    : setErrorMessage(error);
+    localStorage.setItem("searchUserKeyword", values.search);
+    isValid ? onSearchUserMovies() : setErrorMessage(error);
   }
 
   useEffect(() => {
     setErrorMessage("");
   }, [isValid]);
+
+  useEffect(() => {
+    setSearchKeyword(localStorage.getItem("searchKeyword"));
+  }, []);
 
   return (
     <section className="search-form">
@@ -50,7 +51,7 @@ function SearchForm({
             autoComplete="off"
             pattern="[а-яА-Яa-zA-ZёË\- ]{1,}"
             onChange={handleChange}
-            value={values.search || ""}
+            value={values.search || searchKeyword || ""}
             required
           />
           <button
@@ -63,6 +64,7 @@ function SearchForm({
           </span>
         </fieldset>
         <Checkbox
+          isSavedFilms={isSavedFilms}
           handleShortMoviesChecked={handleShortMoviesChecked}
           isShortMoviesChecked={isShortMoviesChecked}
         />

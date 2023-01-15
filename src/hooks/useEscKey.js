@@ -5,7 +5,6 @@ export default function useEscKey(callback, dependency) {
     if (dependency) {
       const onPressEsc = (e) => {
         if (e.keyCode === 27) {
-          console.log(e.keyCode)
           callback();
         }
       };

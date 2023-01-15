@@ -1,10 +1,9 @@
 import "./Checkbox.css";
 
 function Checkbox({ handleShortMoviesChecked, isShortMoviesChecked }) {
-function handleCheck(e) {
-  handleShortMoviesChecked(e);
+function handleCheck() {
+  handleShortMoviesChecked();
 }
-
   return (
     <label className="check-box" htmlFor="checkbox">
       <input

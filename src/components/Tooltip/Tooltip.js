@@ -7,7 +7,7 @@ import bad from "../../images/infiToolTip__Bad.png";
 
 function Tooltip({
   tooltip: { isPopupOpen, message, successful },
-  onClosePopup,
+  handleTooltip,
 }) {
   function handleTooltipClick(e) {
     e.stopPropagation();
@@ -15,11 +15,19 @@ function Tooltip({
 
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
-      onClosePopup();
+      handleCloseTooltip();
     }
   };
 
-  useEscPress(onClosePopup, isPopupOpen);
+  function handleCloseTooltip() {
+    handleTooltip({
+      isPopupOpen: false,
+      message: '',
+      successful: false,
+    });
+  }
+
+  useEscPress(handleCloseTooltip, isPopupOpen);
 
   return (
     <div
@@ -31,7 +39,7 @@ function Tooltip({
           className="tooltip__close-button"
           type="button"
           aria-label="Закрыть"
-          onClick={onClosePopup}
+          onClick={handleCloseTooltip}
         ></button>
         <img
           className="tooltip__info-icon"

@@ -16,7 +16,6 @@ import {
   saveUserMovie,
   deleteUserMovie,
 } from "../../utils/MainApi";
-import moviesApi from "../../utils/MoviesApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
 import Register from "../Register/Register";
@@ -28,7 +27,6 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import NotFound from "../NotFound/NotFound";
 import Tooltip from "../Tooltip/Tooltip";
 import "./App.css";
-import { filterMovies } from "../../utils/Utils";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -45,40 +43,11 @@ function App() {
     email: "",
   });
   const [isUpdateProfile, setIsUpdateProfile] = useState(true);
-
-  const [foundMovies, setFoundMovies] = useState([]);
-  const [foundUserMovies, setFoundUserMovies] = useState([]);
-  const [allMovies, setAllMovies] = useState([]);
-  const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
-  const [isShortUserMoviesChecked, setIsShortUserMoviesChecked] =
-    useState(false);
-  const [isNotFoundResult, setIsNotFoundResult] = useState(true);
-
-  const [registerErrorMessage, setRegisterErrorMessage] = useState("");
-  const [loginErrorMessage, setLoginErrorMessage] = useState("");
   const [editProfileErrorMessage, setEditProfileErrorMessage] = useState("");
-  const [isSearchError, setIsSearchError] = useState(false);
+  const [isUpdated, setIsupdated] = useState(false);
 
   const history = useHistory();
   const location = useLocation();
-
-  useEffect(() => {
-    if (localStorage.getItem("shortMoviesChecked") === "true") {
-      setIsShortMoviesChecked(true);
-    } else {
-      setIsShortMoviesChecked(false);
-    }
-    if (localStorage.getItem("shortUserMoviesChecked") === "true") {
-      setIsShortUserMoviesChecked(true);
-    } else {
-      setIsShortUserMoviesChecked(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("shortMoviesChecked", isShortMoviesChecked);
-    localStorage.setItem("shortUserMoviesChecked", isShortUserMoviesChecked);
-  }, [isShortMoviesChecked, isShortUserMoviesChecked]);
 
   function handleLogin(email, password) {
     setInProgress(true);
@@ -86,19 +55,29 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          setLoginErrorMessage("");
           setLoggedIn(true);
-          // setToken(res.token);
           history.replace({ pathname: "/movies" });
         } else {
-          setLoginErrorMessage(res.message);
+          setTooltip({
+            isPopupOpen: true,
+            message: res.message,
+            successful: false,
+          });
         }
       })
       .catch((err) => {
         if (err.error === "Bad Request") {
-          setLoginErrorMessage(err.validation.body.message);
+          setTooltip({
+            isPopupOpen: true,
+            message: err.validation.body.message,
+            successful: false,
+          });
         } else {
-          setLoginErrorMessage(err.message);
+          setTooltip({
+            isPopupOpen: true,
+            message: err.message,
+            successful: false,
+          });
         }
       })
       .finally(() => {
@@ -111,7 +90,6 @@ function App() {
     return register(name, email, password)
       .then((res) => {
         if (res.id) {
-          setRegisterErrorMessage("");
           handleLogin(email, password);
         } else if (res.message) {
           setTooltip({
@@ -123,9 +101,17 @@ function App() {
       })
       .catch((err) => {
         if (err.error === "Bad Request") {
-          setRegisterErrorMessage(err.validation.body.message);
+          setTooltip({
+            isPopupOpen: true,
+            message: err.validation.body.message,
+            successful: false,
+          });
         } else {
-          setRegisterErrorMessage(err.message);
+          setTooltip({
+            isPopupOpen: true,
+            message: err.message,
+            successful: false,
+          });
         }
       })
       .finally(() => {
@@ -138,8 +124,8 @@ function App() {
     setLoggedIn(false);
     setCurrentUser({});
     localStorage.clear();
-    setFoundMovies([]);
-    setAllMovies([]);
+    // setFoundMovies([]);
+    // setAllMovies([]);
     history.push("/");
   }
 
@@ -171,138 +157,78 @@ function App() {
   }
 
   function clearErrorMessages() {
-    setRegisterErrorMessage("");
-    setLoginErrorMessage("");
     setEditProfileErrorMessage("");
   }
 
-  function handleShortMoviesChecked(e) {
-    setIsShortMoviesChecked(e.target.checked);
+  function handleTooltip({ isOpen, message, isSuccessful }) {
+    setTooltip({
+      isPopupOpen: isOpen,
+      message: message,
+      successful: isSuccessful,
+    });
   }
 
-  function handleShortUserMoviesChecked(e) {
-    setIsShortUserMoviesChecked(e.target.checked);
-  }
-
-  function handleSearchMovies(searchKeyword) {
-    setInProgress(true);
-    setIsNotFoundResult(false);
-    setIsSearchError(false);
-    if (allMovies.length === 0) {
-      moviesApi
-        .getMovies()
-        .then((movies) => {
-          setAllMovies(movies);
-          const searchResult = filterMovies(
-            movies,
-            searchKeyword,
-            isShortMoviesChecked
-          );
-          if (searchResult.length === 0) {
-            setIsNotFoundResult(true);
-            setIsSearchError(true);
-          } else {
-            localStorage.setItem("foundMovies", JSON.stringify(searchResult));
-            setFoundMovies(searchResult);
-          }
-        })
-        .catch((err) => {
-          console.log(err.message);
-          setIsSearchError(true);
-        })
-        .finally(() => {
-          setInProgress(false);
-        });
-    } else {
-      const searchResult = filterMovies(
-        allMovies,
-        searchKeyword,
-        isShortMoviesChecked
-      );
-      if (searchResult.length === 0) {
-        setIsNotFoundResult(true);
-      } else {
-        localStorage.setItem("foundMovies", JSON.stringify(searchResult));
-        setFoundMovies(searchResult);
-      }
-      setInProgress(false);
-    }
-  }
-
-  function handleSearchUserMovies(searchKeyword) {
-    setInProgress(true);
-    setIsNotFoundResult(false);
-    setIsSearchError(false);
-    const userMovies = JSON.parse(localStorage.getItem("userMovies"));
-    const searchResult = filterMovies(
-      userMovies,
-      searchKeyword,
-      isShortUserMoviesChecked
-    );
-    if (searchResult.length === 0) {
-      setIsNotFoundResult(true);
-    } else {
-      localStorage.setItem("foundUserMovies", JSON.stringify(searchResult));
-      setFoundUserMovies(searchResult);
-    }
-    setInProgress(false);
+  function handlePreloader(turnOn) {
+    setInProgress(turnOn);
   }
 
   function handleSaveMovie(movie) {
     const token = localStorage.getItem("jwt");
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
+    userMovies.find((item) => {
+      if(item.movieId === movie.id){
+        return 
+      }
+    }) 
     saveUserMovie(movie, token)
       .then((data) => {
         localStorage.setItem(
           "userMovies",
           JSON.stringify([...userMovies, data])
         );
+        setIsupdated(!isUpdated);
       })
       .catch((err) => {
-        setTooltip({
+        handleTooltip({
           isPopupOpen: true,
           message: err.message,
           successful: false,
         });
-      });
-  }
-
-  // Удаление карточек фильмов
-  function handlePopupClose() {
-    setTooltip({
-      isPopupOpen: false,
-      message: '',
-      successful: false,
-      // ...Tooltip,
-      // isPopupOpen: false,
-    });
+      })
+      .finally(() => handlePreloader(false));
+    
   }
 
   // обработчик удаления фильма пользователя
-  function handleDeleteUserMovie(movieId) {
+  function handleDeleteUserMovie(movieCard) {
     const token = localStorage.getItem("jwt");
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
     const foundUserMovies = JSON.parse(localStorage.getItem("foundUserMovies"));
-    deleteUserMovie(movieId, token)
+    const deleteMovie = userMovies.find((item) => item._id === movieCard._id);
+    deleteUserMovie(movieCard._id, token)
       .then(() => {
         const newUserMovies = userMovies.filter((movie) => {
-          return movie._id !== movieId;
+          return movie.movieId !== deleteMovie.movieId;
         });
         localStorage.setItem("userMovies", JSON.stringify(newUserMovies));
         const newFoundUserMovies = foundUserMovies.filter((movie) => {
-          return movie._id !== movieId;
+          return movie.movieId !== deleteMovie.movieId;
         });
         if (newFoundUserMovies.length === 0) {
-          setIsNotFoundResult(true);
+          handleTooltip({
+            isPopupOpen: true,
+            message: "Добавьте фильмы в избранное",
+            successful: true,
+          });
         }
         localStorage.setItem(
           "foundUserMovies",
           JSON.stringify(newFoundUserMovies)
         );
-        setFoundUserMovies(newFoundUserMovies);
+        setIsupdated(!isUpdated);
       })
       .catch((err) => {
-        setTooltip({
+        handleTooltip({
           isPopupOpen: true,
           message: err.message,
           successful: false,
@@ -343,6 +269,7 @@ function App() {
           .then(([moviesData, userData]) => {
             setCurrentUser(userData);
             localStorage.setItem("userMovies", JSON.stringify(moviesData));
+            localStorage.setItem("shortMoviesChecked", false);
           })
           .catch((err) => {
             setTooltip({
@@ -388,28 +315,19 @@ function App() {
             path="/movies"
             component={Movies}
             loggedIn={loggedIn}
-            movies={foundMovies} // результаты поиска
-            onSearchMovies={handleSearchMovies} // обработчик поиска
-            isNotFoundResult={isNotFoundResult} // ничего не нашлось
-            isSearchError={isSearchError}
+            handleTooltip={handleTooltip}
+            handlePreloader={handlePreloader}
             handleSaveMovie={handleSaveMovie}
             handleDeleteUserMovie={handleDeleteUserMovie}
-            inProgress={inProgress}
-            handleShortMoviesChecked={handleShortMoviesChecked}
-            isShortMoviesChecked={isShortMoviesChecked}
           />
           <ProtectedRoute
             exact
             path="/saved-movies"
             component={SavedMovies}
             loggedIn={loggedIn}
-            movies={foundUserMovies} // результаты поиска
-            onSearchUserMovies={handleSearchUserMovies} // обработчик поиска
-            isNotFoundResult={isNotFoundResult} // ничего не нашлось
-            inProgress={inProgress} // сделать?
-            handleShortUserMoviesChecked={handleShortUserMoviesChecked}
-            isShortUserMoviesChecked={isShortUserMoviesChecked}
-            // isPopupOpen={isPopupOpen}
+            isUpdated={isUpdated}
+            handleTooltip={handleTooltip}
+            handlePreloader={handlePreloader}
             handleDeleteUserMovie={handleDeleteUserMovie}
           />
           <Route exact path="/signup">
@@ -419,8 +337,7 @@ function App() {
               <Register
                 onRegister={handleRegister}
                 inProgress={inProgress}
-                errorMessage={registerErrorMessage}
-                clearErrorMessages={clearErrorMessages}
+                // clearErrorMessages={clearErrorMessages}
               />
             )}
           </Route>
@@ -431,8 +348,7 @@ function App() {
               <Login
                 onLogin={handleLogin}
                 inProgress={inProgress}
-                errorMessage={loginErrorMessage}
-                clearErrorMessages={clearErrorMessages}
+                // clearErrorMessages={clearErrorMessages}
               />
             )}
           </Route>
@@ -440,7 +356,7 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
-        <Tooltip tooltip={tooltip} onClosePopup={handlePopupClose} />
+        <Tooltip tooltip={tooltip} handleTooltip={handleTooltip} />
       </CurrentUserContext.Provider>
     </div>
   );
