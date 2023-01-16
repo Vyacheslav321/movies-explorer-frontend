@@ -294,9 +294,6 @@ function App() {
           <Route exact path="/">
             <Main loggedIn={loggedIn} />
           </Route>
-          <Route exact path="/">
-            {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin" />}
-          </Route>
           <ProtectedRoute
             exact
             path="/profile"
