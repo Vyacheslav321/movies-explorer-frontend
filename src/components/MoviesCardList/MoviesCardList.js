@@ -21,7 +21,9 @@ function MoviesCardList({
     add: 3,
   });
 
-  const [userMovies, setUserMovies] = useState(JSON.parse(localStorage.getItem("userMovies")));
+  const [userMovies, setUserMovies] = useState(
+    JSON.parse(localStorage.getItem("userMovies"))
+  );
 
   const location = useLocation();
 
@@ -56,12 +58,18 @@ function MoviesCardList({
     }
   }
 
-useEffect(() => {
-  setUserMovies(JSON.parse(localStorage.getItem("userMovies")));
-}, [isUpdated])
+  useEffect(() => {
+    setUserMovies(JSON.parse(localStorage.getItem("userMovies")));
+  }, [isUpdated, isSearchError]);
 
   return (
     <>
+      <span
+        className={`movies__error ${
+          isSearchError ? "" : "movies-card-list__hide"
+        }`}
+      >{`Cервер недоступен. \nПодождите немного и попробуйте ещё раз`}
+      </span>
       <ul
         className={`movies-card-list__wrap  ${
           isSavedFilms
@@ -69,14 +77,6 @@ useEffect(() => {
             : "movies-card-list__wrap_type_movies"
         }`}
       >
-        <span
-          className={`movies__error ${
-            isSearchError ? "" : "movies-card-list__hide"
-          }`}
-        >
-          Во время запроса произошла ошибка. Возможно, проблема с соединением
-          или сервер недоступен. Подождите немного и попробуйте ещё раз
-        </span>
         {moviesShow.map((movie) => {
           return (
             <MoviesCard

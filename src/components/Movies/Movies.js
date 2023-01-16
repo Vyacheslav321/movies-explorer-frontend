@@ -19,7 +19,9 @@ function Movies({
   const [allMovies, setAllMovies] = useState([]);
   const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
   const [isNotFoundResult, setIsNotFoundResult] = useState(true);
-  const [foundMovies, setFoundMovies] = useState([]);
+  const [foundMovies, setFoundMovies] = useState(
+    localStorage.setItem("foundMovies", JSON.stringify([]))
+  );
 
   const [isSearchError, setIsSearchError] = useState(false);
 
@@ -49,7 +51,7 @@ function Movies({
         .catch((err) => {
           handleTooltip({
             isPopupOpen: true,
-            message: `{${err.message} Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз}`,
+            message: err.message,
             successful: false,
           });
           setIsSearchError(true);
@@ -82,9 +84,8 @@ function Movies({
       setIsShortMoviesChecked(false);
     }
     handleSearchMovies();
-    setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")))
+    setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")));
   }, [isShortMoviesChecked]);
-
 
   return (
     <>

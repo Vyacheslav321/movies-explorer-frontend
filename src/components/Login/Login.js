@@ -8,13 +8,12 @@ import "../Navigation/Navigation.css";
 import Preloader from "../Preloader/Preloader";
 
 
-function Login({ onLogin, inProgress, errorMessage, clearErrorMessages }) {
+function Login({ onLogin, inProgress }) {
   const { values, handleChange, error, isValid, resetForm } = useFormWithValidation();
 
   function handleLogin(e) {
     e.preventDefault();
     onLogin(values.email, values.password);
-    clearErrorMessages();
   }
 
   useEffect(() => {
@@ -54,7 +53,7 @@ function Login({ onLogin, inProgress, errorMessage, clearErrorMessages }) {
               value={values.password || ""}
             ></input>
             <p className="login__error login__error_place_last">
-              {`${error.email} \n ${error.password} \n ${errorMessage}`}
+              {`${error.email} \n ${error.password}`}
             </p>
             <div className="login__button-container">
               <button

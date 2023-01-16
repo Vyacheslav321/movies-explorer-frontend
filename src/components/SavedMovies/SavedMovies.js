@@ -47,7 +47,7 @@ function SavedMovies({
 
   useEffect(() => {
     handleSearchUserMovies();
-    setFoundUserMovies(JSON.parse(localStorage.getItem("foundUserMovies")))
+    setFoundUserMovies(JSON.parse(localStorage.getItem("foundUserMovies")));
   }, [isShortUserMoviesChecked, isUpdated]);
 
   return (

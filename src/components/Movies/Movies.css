@@ -3,3 +3,28 @@
   padding: 0;
   background: var(--color-background);
 }
+
+.movies__error {
+  margin: 10px 15px;
+  padding: 0 10px;
+  width: 50vw;
+  /* max-width: 50vw; */
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .movies__error {
+    padding: 144px 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .movies__error {
+    padding: 150px 0;
+  }
+}

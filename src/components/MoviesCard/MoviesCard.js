@@ -23,7 +23,6 @@ function MoviesCard({
       movie?.image?.formats?.small?.path === null
         ? `https://api.nomoreparties.co${movie?.image?.formats?.small?.url}`
         : `https://api.nomoreparties.co${movie?.image?.url}`
-      // : null
     }`,
     trailerLink: movie?.trailerLink,
     thumbnail: `${

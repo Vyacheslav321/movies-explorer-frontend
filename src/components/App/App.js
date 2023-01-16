@@ -125,8 +125,6 @@ function App() {
     setLoggedIn(false);
     setCurrentUser({});
     localStorage.clear();
-    // setFoundMovies([]);
-    // setAllMovies([]);
     history.push("/");
   }
 
@@ -176,24 +174,24 @@ function App() {
   function handleSaveMovie(movie) {
     const token = localStorage.getItem("jwt");
     const userMovies = JSON.parse(localStorage.getItem("userMovies"));
-    const save = getUserMovieCard(userMovies, movie)
-    if (save === undefined) { 
-    saveUserMovie(movie, token)
-      .then((data) => {
-        localStorage.setItem(
-          "userMovies",
-          JSON.stringify([...userMovies, data])
-        );
-        setIsupdated(!isUpdated);
-      })
-      .catch((err) => {
-        handleTooltip({
-          isPopupOpen: true,
-          message: err.message,
-          successful: false,
-        });
-      })
-      .finally(() => handlePreloader(false));
+    const save = getUserMovieCard(userMovies, movie);
+    if (save === undefined) {
+      saveUserMovie(movie, token)
+        .then((data) => {
+          localStorage.setItem(
+            "userMovies",
+            JSON.stringify([...userMovies, data])
+          );
+          setIsupdated(!isUpdated);
+        })
+        .catch((err) => {
+          handleTooltip({
+            isPopupOpen: true,
+            message: err.message,
+            successful: false,
+          });
+        })
+        .finally(() => handlePreloader(false));
     }
   }
 
@@ -267,7 +265,10 @@ function App() {
           .then(([moviesData, userData]) => {
             setCurrentUser(userData);
             localStorage.setItem("userMovies", JSON.stringify(moviesData));
-            localStorage.setItem("shortMoviesChecked", false);
+            localStorage.setItem("searchKeyword", "");
+            localStorage.setItem("searchUserKeyword", "");
+            localStorage.setItem("foundMovies", JSON.stringify([]));
+            localStorage.setItem("foundUserMovies", JSON.stringify([]));
           })
           .catch((err) => {
             setTooltip({
@@ -336,7 +337,6 @@ function App() {
               <Register
                 onRegister={handleRegister}
                 inProgress={inProgress}
-                // clearErrorMessages={clearErrorMessages}
               />
             )}
           </Route>
@@ -347,7 +347,6 @@ function App() {
               <Login
                 onLogin={handleLogin}
                 inProgress={inProgress}
-                // clearErrorMessages={clearErrorMessages}
               />
             )}
           </Route>
