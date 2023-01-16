@@ -22,7 +22,6 @@ function Login({ onLogin, inProgress }) {
 
   return (
     <>
-      <Preloader inProgress={inProgress} />
       <section className="login">
         <div className="login__header">
           <Link to="/" className="logo" />

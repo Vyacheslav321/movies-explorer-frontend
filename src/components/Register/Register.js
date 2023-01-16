@@ -18,7 +18,6 @@ function Register({onRegister, inProgress, errorMessage, clearErrorMessages}) {
 
   return (
     <section className="register login">
-      <Preloader inProgress={inProgress} />
       <div className="login__header">
         <Link to="/" className="logo" />
         <h2 className="login__welcome">Добро пожаловать!</h2>

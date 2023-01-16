@@ -334,20 +334,14 @@ function App() {
             {loggedIn ? (
               <Redirect to="/" />
             ) : (
-              <Register
-                onRegister={handleRegister}
-                inProgress={inProgress}
-              />
+              <Register onRegister={handleRegister} inProgress={inProgress} />
             )}
           </Route>
           <Route exact path="/signin">
             {loggedIn ? (
               <Redirect to="/" />
             ) : (
-              <Login
-                onLogin={handleLogin}
-                inProgress={inProgress}
-              />
+              <Login onLogin={handleLogin} inProgress={inProgress} />
             )}
           </Route>
           <Route path="*">

@@ -5,10 +5,10 @@
 }
 
 .movies__error {
-  margin: 10px 15px;
-  padding: 0 10px;
+  margin: 10px auto;
+  padding: 0 15px;
   width: 50vw;
-  /* max-width: 50vw; */
+  max-width: 50vw;
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;

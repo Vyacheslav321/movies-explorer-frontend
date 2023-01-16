@@ -63,12 +63,12 @@ function MoviesCardList({
   }, [isUpdated, isSearchError]);
 
   return (
-    <>
+    <div className="movies-card-list">
       <span
         className={`movies__error ${
           isSearchError ? "" : "movies-card-list__hide"
         }`}
-      >{`Cервер недоступен. \nПодождите немного и попробуйте ещё раз`}
+      >{`ВВедите поисковый запрос`}
       </span>
       <ul
         className={`movies-card-list__wrap  ${
@@ -99,7 +99,7 @@ function MoviesCardList({
             Ещё
           </button>
         )}
-    </>
+    </div>
   );
 }
 
