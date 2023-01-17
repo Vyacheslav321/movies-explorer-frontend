@@ -284,8 +284,6 @@ function App() {
             setInProgress(false);
           });
       }
-    } else {
-      handleSignOut()
     }
   }, [loggedIn]);
 
