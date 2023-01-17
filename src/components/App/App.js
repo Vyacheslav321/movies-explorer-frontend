@@ -136,6 +136,11 @@ function App() {
         .then((userInfo) => {
           if (userInfo.name) {
             setCurrentUser(userInfo);
+            setTooltip({
+              isPopupOpen: true,
+              message: "Данные пользователя успешно изменены",
+              successful: true,
+            });
             setIsUpdateProfile(true);
           } else if (userInfo.message) {
             setEditProfileErrorMessage(userInfo.message);
@@ -178,11 +183,13 @@ function App() {
     if (save === undefined) {
       saveUserMovie(movie, token)
         .then((data) => {
-          localStorage.setItem(
-            "userMovies",
-            JSON.stringify([...userMovies, data])
-          );
-          setIsupdated(!isUpdated);
+          if (data._id) {
+            localStorage.setItem(
+              "userMovies",
+              JSON.stringify([...userMovies, data])
+            );
+            setIsupdated(!isUpdated);
+          }
         })
         .catch((err) => {
           handleTooltip({
@@ -237,7 +244,6 @@ function App() {
     const path = location.pathname;
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      setInProgress(true);
       getUserInfo(jwt)
         .then((data) => {
           setCurrentUser(data);
@@ -248,19 +254,16 @@ function App() {
           if (err.code === 401) {
             setLoggedIn(false);
           }
-        })
-        .finally(() => {
-          setInProgress(false);
         });
     }
-  }, [history, location.pathname]);
+  }, []);
 
   // загрузка данных пользователя после логина
   useEffect(() => {
     if (loggedIn) {
-      setInProgress(true);
       const token = localStorage.getItem("jwt");
       if (token) {
+        setInProgress(true);
         Promise.all([getMovies(token), getUserInfo(token)])
           .then(([moviesData, userData]) => {
             setCurrentUser(userData);
@@ -280,9 +283,9 @@ function App() {
           .finally(() => {
             setInProgress(false);
           });
-      } else {
-        setLoggedIn(false);
       }
+    } else {
+      handleSignOut()
     }
   }, [loggedIn]);
 
@@ -329,14 +332,14 @@ function App() {
           />
           <Route exact path="/signup">
             {loggedIn ? (
-              <Redirect to="/" />
+              <Redirect to="/movies" />
             ) : (
               <Register onRegister={handleRegister} inProgress={inProgress} />
             )}
           </Route>
           <Route exact path="/signin">
             {loggedIn ? (
-              <Redirect to="/" />
+              <Redirect to="/movies" />
             ) : (
               <Login onLogin={handleLogin} inProgress={inProgress} />
             )}

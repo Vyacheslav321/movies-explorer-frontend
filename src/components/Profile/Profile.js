@@ -33,8 +33,7 @@ function Profile({
   useEffect(() => {
     if (
       !isValid ||
-      currentUser.name === values.name ||
-      currentUser.email === values.email
+      (currentUser.name === values.name && currentUser.email === values.email)
     ) {
       setAdditionalVerification(true);
       setCurrentUserError("Введите новые данные пользователя");
@@ -61,6 +60,7 @@ function Profile({
   function onCloseEdit() {
     setEditProfile(false);
     setValues(currentUser);
+    clearErrorMessages();
   }
 
   function handleEditProfile() {
