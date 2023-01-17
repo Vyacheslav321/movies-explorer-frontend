@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import moviesApi from "../../utils/MoviesApi";
+import { filterMovies } from "../../utils/Utils";
 
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./Movies.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { filterMovies } from "../../utils/Utils";
+
 
 function Movies({
   loggedIn,

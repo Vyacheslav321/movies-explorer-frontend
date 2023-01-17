@@ -3,7 +3,6 @@ import { useFormWithValidation } from "../../hooks/useFormValidation";
 
 import "../App/App.css";
 import "../Login/Login.css";
-import Preloader from "../Preloader/Preloader";
 import "./Register.css";
 
 function Register({onRegister, inProgress, errorMessage, clearErrorMessages}) {
