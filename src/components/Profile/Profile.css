@@ -5,6 +5,7 @@
   height: 100vh;
 }
 
+
 .profile__main {
   display: flex;
   flex-direction: column;
@@ -47,7 +48,7 @@
   align-content: center;
   align-items: center;
   position: relative;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .profile__container {
@@ -82,7 +83,8 @@
   margin: 0;
   padding: 0;
   background-color: var(--color-background);
-  border: 0 none var(--color-white);
+  border: none;
+  outline: none;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -93,17 +95,25 @@
   flex: 1;
 }
 
-.profile__active:active {
+.profile__input::placeholder {
+  color: var(--color-white);
+}
+
+.profile__input:focus {
   outline: 0;
   outline-offset: 0;
-  border: 0;
+  border: none;
   border-bottom: 1px solid var(--color-blue);
+}
+
+.profile__input:invalid {
+  color: var(--color-red);
 }
 
 .profile__line {
   margin: 5px 0 7px;
   padding: 0;
-  border-bottom: 1px solid var(--color-line)
+  border-bottom: 1px solid var(--color-line);
 }
 
 .profile__error {
@@ -144,12 +154,43 @@
   font-size: 12px;
   line-height: 15px;
   color: var(--color-white);
+  cursor: pointer;
 }
 
 .profile__button:hover {
   opacity: 0.8;
   transition: opacity 0.5s ease;
 }
+
+.profile__button_disabled {
+  background: var(--color-background-tooltip);
+  color: #000;
+}
+
+.profile__close-edit {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  bottom: 30px;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.profile__close-edit:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
 .profile__edit {
   margin: 60px 0 16px;
   padding: 0;
@@ -167,6 +208,11 @@
 .profile__edit:hover {
   opacity: 0.7;
   transition: opacity 0.5s ease;
+}
+
+.profile__button_disabled {
+  background: var(--color-background-tooltip);
+  color: #000;
 }
 
 .profile__exit {
@@ -230,6 +276,10 @@
 
   .profile__button {
     bottom: 70px;
+  }
+
+  .profile__close-edit {
+    bottom: 35px;
   }
 
   .profile__edit {

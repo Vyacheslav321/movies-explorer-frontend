@@ -1,13 +1,17 @@
 import "./Checkbox.css";
 
-function Checkbox({ onChange, isChecked }) {
+function Checkbox({ handleShortMoviesChecked, isShortMoviesChecked }) {
+function handleCheck() {
+  handleShortMoviesChecked();
+}
   return (
-    <label className="check-box">
+    <label className="check-box" htmlFor="checkbox">
       <input
+      id='checkbox'
         type="checkbox"
         className="check-box__switcher"
-        onChange={onChange}
-        checked={isChecked}
+        onChange={handleCheck}
+        checked={isShortMoviesChecked}
       />
       Короткометражки
     </label>

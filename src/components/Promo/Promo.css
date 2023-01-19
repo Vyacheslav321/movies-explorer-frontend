@@ -104,9 +104,9 @@
   .promo__text-wrap {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-content: flex-start;
-    justify-items: start;
+    justify-items: flex-start;
     align-items: flex-start;
   }
 

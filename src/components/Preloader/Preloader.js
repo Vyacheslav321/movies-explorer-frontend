@@ -1,9 +1,9 @@
 import React from "react";
 import "./Preloader.css";
 
-const Preloader = (props) => {
+const Preloader = ({ inProgress }) => {
   return (
-    <div className={`preloader ${props.inProgress ? "" : "preloader__hide"}`}>
+    <div className={`preloader ${inProgress ? "" : "preloader__hide"}`}>
       <div className="preloader__container">
         <span className="preloader__round"></span>
       </div>

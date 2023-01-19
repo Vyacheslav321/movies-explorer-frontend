@@ -11,6 +11,7 @@
 .register__error {
   margin: 6px 0;
   padding: 0 0 204px;
+  max-width: fit-content;
   min-height: 24px;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
