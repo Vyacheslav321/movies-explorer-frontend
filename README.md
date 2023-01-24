@@ -2,7 +2,6 @@
 
 <h1>movies-explorer-frontend</h1>
 
-[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=json5&package-manager=npm_and_yarn&previous-version=1.0.1&new-version=1.0.2)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
 
 Фронтенд часть приложения [movies-explorer](https://movies-explorer.dip.nomoredomains.club)
 
